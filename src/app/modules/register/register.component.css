@@ -1,0 +1,17 @@
+.container-register{
+  padding-top: 150px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.container-register-card{
+  width: 400px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  text-align: center;
+}
+
+.line{
+  border-bottom: 1px solid darkgray;
+  margin: 20px 15px
+}
