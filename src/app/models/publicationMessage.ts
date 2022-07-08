@@ -1,8 +1,8 @@
 export interface PublicationMessage {
-  id: number;
+  id: bigint;
   message: string;
-  publication: number;
-  location: number;
+  publication: bigint;
+  line: number;
   level: number;
   level1: number;
   level2: number;
