@@ -54,7 +54,6 @@ export class PublicationsService {
         retry(2),catchError(this.handleError));
   }
 
-  // Delete
   delete(id: any) {
     return this.http.delete(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(
