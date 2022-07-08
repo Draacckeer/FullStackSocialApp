@@ -2,6 +2,8 @@ import {NgModule} from "@angular/core";
 import {Route, RouterModule} from "@angular/router";
 import {PublicationsComponent} from "./publications.component";
 import {NavbarModule} from "../navbar/navbar.module";
+import {MatCardModule} from "@angular/material/card";
+import {CommonModule} from "@angular/common";
 
 
 const publicationsRoutes: Route[] = [
@@ -18,6 +20,8 @@ const publicationsRoutes: Route[] = [
   imports: [
     RouterModule.forChild(publicationsRoutes),
     NavbarModule,
+    MatCardModule,
+    CommonModule,
   ]
 })
 

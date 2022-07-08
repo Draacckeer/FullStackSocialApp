@@ -9,7 +9,7 @@ import {Publication} from "../models/publication";
 export class PublicationsService {
 
   // Endpoint
-  basePath = 'https://ksero.herokuapp.com/api/v1/publications';
+  basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/publications';
 
   httpOptions = {
     headers: new HttpHeaders({
