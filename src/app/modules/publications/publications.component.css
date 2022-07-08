@@ -1,0 +1,10 @@
+.line-comments{
+  border-bottom: 1px solid darkgray;
+  padding: 20px 0px;
+  width: 450px;
+}
+
+.line{
+  border-bottom: 1px solid darkgray;
+  width: 450px;
+}

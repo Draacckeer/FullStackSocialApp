@@ -1,18 +1,27 @@
 <app-navbar></app-navbar>
 <div>
-  <mat-card style="width: 450px; margin: 30px auto 0;" *ngFor="let publication of publicationsData">
+  <mat-card style="width: 450px; margin: 30px auto 0; padding: 0" *ngFor="let publication of publicationsData">
     <mat-card-header>
       <mat-card-title>
+        <br>
         {{publication.title}}
       </mat-card-title>
     </mat-card-header>
+    <br>
     <mat-card-content>
-      <mat-card style="margin-top: 30px; background-color: #f0f2f5" *ngFor="let publicationMessage of publicationMessagesArranged[publicationsData.indexOf(publication)]">
-        <mat-card-content>
-          <div>{{publicationMessage.id}}</div>
-          <div>{{publicationMessage.message}}</div>
-        </mat-card-content>
-      </mat-card>
+      <div style="margin-bottom: 20px;">
+        <div>Publication Content</div>
+      </div>
+      <div class="line"></div>
+      <div style="background-color: #f0f2f5" *ngFor="let publicationMessage of publicationMessagesArranged[publicationsData.indexOf(publication)]">
+        <br>
+        <div>{{publicationMessage.id}}</div>
+        <div>{{publicationMessage.message}}</div>
+        <div class="line-comments"></div>
+      </div>
+      <div style="padding: 30px; background-color: #f0f2f5">
+        Write a comment here...
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
