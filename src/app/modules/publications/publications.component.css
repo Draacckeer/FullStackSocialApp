@@ -8,3 +8,12 @@
   border-bottom: 1px solid darkgray;
   width: 450px;
 }
+
+[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: #555;
+}
+
+[placeholder]:empty:focus::before {
+  content: "";
+}

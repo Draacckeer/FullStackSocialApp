@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {PublicationMessage} from "../models/publicationMessage";
+import {PublicationComment} from "../models/publicationComment";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import {PublicationMessage} from "../models/publicationMessage";
 export class PublicationMessagesService {
 
   // Endpoint
-  basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/publication_messages';
+  basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/publication_comments';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,29 +34,29 @@ export class PublicationMessagesService {
     return throwError(() => new Error('Something happened with request, please try again later'));
   }
 
-  getAll(): Observable<PublicationMessage> {
-    return this.http.get<PublicationMessage>(this.basePath, this.httpOptions)
+  getAll(): Observable<PublicationComment> {
+    return this.http.get<PublicationComment>(this.basePath, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-  getByPublicationId(publicationId: any): Observable<PublicationMessage> {
-    return this.http.get<PublicationMessage>(`${this.basePath}/getByPublicationId/${publicationId}`, this.httpOptions)
+  getByPublicationId(publicationId: any): Observable<PublicationComment> {
+    return this.http.get<PublicationComment>(`${this.basePath}/getByPublicationId/${publicationId}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-  create(item: any): Observable<PublicationMessage> {
-    return this.http.post<PublicationMessage>(this.basePath, JSON.stringify(item), this.httpOptions)
+  create(item: any): Observable<PublicationComment> {
+    return this.http.post<PublicationComment>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-  update(id: any, item: any): Observable<PublicationMessage> {
-    return this.http.put<PublicationMessage>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
+  update(id: any, item: any): Observable<PublicationComment> {
+    return this.http.put<PublicationComment>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(2),catchError(this.handleError));
   }

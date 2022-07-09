@@ -10,17 +10,37 @@
     <br>
     <mat-card-content>
       <div style="margin-bottom: 20px;">
-        <div>Publication Content</div>
+        <div style="margin-left: 20px;"> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+          galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+          also the leap into electronic typesetting, remaining essentially unchanged. </div>
       </div>
       <div class="line"></div>
-      <div style="background-color: #f0f2f5" *ngFor="let publicationMessage of publicationMessagesArranged[publicationsData.indexOf(publication)]">
+      <div style="background-color: #f0f2f5" *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
         <br>
-        <div>{{publicationMessage.id}}</div>
-        <div>{{publicationMessage.message}}</div>
+        <div style="margin-left: 20px;">{{publicationComment.id}}</div>
+        <div style="margin-left: 20px;">{{publicationComment.comment}}</div>
         <div class="line-comments"></div>
       </div>
-      <div style="padding: 30px; background-color: #f0f2f5">
-        Write a comment here...
+      <div>
+        <div style="padding-left: 30px; padding-right: 30px;">
+          <div style="display: flex; flex-direction: row">
+            <div style="flex-grow: 1; flex-basis: 0;">
+              <div style="display: flex; flex-direction: row;">
+                <div class="form" style="flex-grow: 1;">
+                  <div style="padding: 8px 12px;">
+                    <textarea cdkTextareaAutosize placeholder="Add a new comment here..." style="border-radius: 20px; padding: 10px;
+                  font-size: 14px; font-family: 'Roboto', sans-serif; font-weight: 300; background-color: #f0f2f5; outline: none;
+                  border: none; width: calc(100% - 20px); display: inline-block" [(ngModel)]="comment[publicationsData.indexOf(publication)]"></textarea>
+                  </div>
+                </div>
+                <button mat-button (click)="addNewComment(publicationsData.indexOf(publication), publication.id)">Comment</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

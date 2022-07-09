@@ -1,4 +1,4 @@
 export interface Publication {
-  id: bigint;
+  id: number;
   title: string;
 }
