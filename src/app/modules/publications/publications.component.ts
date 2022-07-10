@@ -3,6 +3,7 @@ import {Publication} from "../../models/publication";
 import {PublicationsService} from "../../services/publications.service";
 import {PublicationComment} from "../../models/publicationComment";
 import {PublicationMessagesService} from "../../services/publicationMessages.service";
+import io from "socket.io-client";
 
 @Component({
   selector: 'app-publications',
@@ -11,6 +12,8 @@ import {PublicationMessagesService} from "../../services/publicationMessages.ser
 })
 
 export class PublicationsComponent implements OnInit, AfterViewInit{
+  dataTest: number = 0;
+  socket: any;
   publicationCommentCreate: PublicationComment = {} as PublicationComment;
   comment: string[] = [] as string[];
   publicationsData: Publication[] = [] as Publication[];
@@ -26,12 +29,19 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.retrievePublications();
-
+    this.socket = io('http://localhost:3000');
+    this.socket.on('data', (data: any)=>{
+      this.dataTest = data.x;
+    })
   }
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#f0f2f5';
+  }
+
+  testSocketIo(){
+    this.socket.emit('increment', 1);
   }
 
 

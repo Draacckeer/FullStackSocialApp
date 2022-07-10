@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
 <div>
+  <button mat-button (click)="testSocketIo()">Test Socket Io</button>
+  <div>{{dataTest}}</div>
   <mat-card style="width: 450px; margin: 30px auto 0; padding: 0" *ngFor="let publication of publicationsData">
     <mat-card-header>
       <mat-card-title>
