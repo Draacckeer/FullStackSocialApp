@@ -13,6 +13,7 @@ import io from "socket.io-client";
 
 export class PublicationsComponent implements OnInit, AfterViewInit{
   dataTest: number = 0;
+  commentTest: any;
   socket: any;
   publicationCommentCreate: PublicationComment = {} as PublicationComment;
   comment: string[] = [] as string[];
@@ -29,9 +30,12 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.retrievePublications();
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
     this.socket.on('data', (data: any)=>{
       this.dataTest = data.x;
+    })
+    this.socket.on('addNewPublicationComment', (data: any)=>{
+      this.commentTest = data;
     })
   }
 
@@ -42,6 +46,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   testSocketIo(){
     this.socket.emit('increment', 1);
+    this.socket.emit('addNewPublicationComment', "asdsdwew");
   }
 
 
