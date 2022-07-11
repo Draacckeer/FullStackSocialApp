@@ -13,7 +13,6 @@ import io from "socket.io-client";
 
 export class PublicationsComponent implements OnInit, AfterViewInit{
   dataTest: number = 0;
-  commentTest: any;
   socket: any;
   publicationCommentCreate: PublicationComment = {} as PublicationComment;
   comment: string[] = [] as string[];
@@ -30,23 +29,26 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.retrievePublications();
-    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket = io('http://localhost:3000/');
     this.socket.on('data', (data: any)=>{
       this.dataTest = data.x;
     })
-    this.socket.on('addNewPublicationComment', (data: any)=>{
-      this.commentTest = data;
+    this.socket.on('addNewPublicationComment', (data: PublicationComment)=>{
+      this.publicationCommentsArranged[this.publicationsData.findIndex(x=>x.id==data.publication)].push(data);
     })
+
+
   }
 
   ngAfterViewInit() {
+
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#f0f2f5';
   }
 
   testSocketIo(){
     this.socket.emit('increment', 1);
-    this.socket.emit('addNewPublicationComment', "asdsdwew");
+
   }
 
 
@@ -54,11 +56,30 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
     this.publicationCommentsArranged = [];
     this.publicationsService.getAll().subscribe((response: any)=>{
       this.publicationsData = response;
+
+
       this.publicationMessagesService.getAll().subscribe((response2: any)=>{
         this.publicationCommentsData = response2;
         for(let publication of this.publicationsData){
           this.publicationCommentsArranged.push(this.publicationCommentsData.filter(x=>x.publication==publication.id));
+          let inputs = document.querySelectorAll("textarea");
+          inputs.forEach(input => {
+            input.addEventListener("keydown", (e)=>{
+              if(e.key == "Enter" && !e.shiftKey){
+                e.preventDefault();
+              }
+            });
+          });
+
+          document.getElementById("input" + publication.id)!
+            .addEventListener("keyup", (e) => {
+              e.preventDefault();
+              if (e.key == "Enter" && !e.shiftKey) {
+                document.getElementById("button" + publication.id)!.click();
+              }
+            });
         }
+
       })
     })
   }
@@ -77,6 +98,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
       this.publicationCommentsArranged[index].push(response);
       this.publicationCommentCreate = {} as PublicationComment;
       this.comment[index] = '';
+      this.socket.emit('addNewPublicationComment', response);
     })
   }
 }
