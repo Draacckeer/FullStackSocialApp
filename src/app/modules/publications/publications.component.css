@@ -17,3 +17,16 @@
 [placeholder]:empty:focus::before {
   content: "";
 }
+
+.comment-textarea{
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: #f0f2f5;
+  outline: none;
+  border: none; width: calc(100% - 20px);
+  display: inline-block;
+  overflow-y: hidden
+}

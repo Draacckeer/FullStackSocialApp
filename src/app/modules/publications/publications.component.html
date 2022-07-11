@@ -31,9 +31,8 @@
               <div style="display: flex; flex-direction: row;">
                 <div class="form" style="flex-grow: 1;">
                   <div style="padding: 8px 12px;">
-                    <textarea [id]="'input' + publication.id" cdkTextareaAutosize placeholder="Add a new comment here..." style="border-radius: 20px; padding: 10px;
-                  font-size: 14px; font-family: 'Roboto', sans-serif; font-weight: 300; background-color: #f0f2f5; outline: none;
-                  border: none; width: calc(100% - 20px); display: inline-block; overflow-y: hidden" [(ngModel)]="comment[publicationsData.indexOf(publication)]"></textarea>
+                    <textarea class="comment-textarea" [id]="'input' + publication.id" cdkTextareaAutosize placeholder="Add a new comment here..."
+                              [(ngModel)]="comment[publicationsData.indexOf(publication)]"></textarea>
                   </div>
                 </div>
                 <button [id]="'button' + publication.id" mat-button color="primary" (click)="addNewComment(publicationsData.indexOf(publication), publication.id)">Comment</button>

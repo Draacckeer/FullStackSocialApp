@@ -69,6 +69,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
                 e.preventDefault();
               }
             });
+
           });
 
           document.getElementById("input" + publication.id)!
