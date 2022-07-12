@@ -7,6 +7,7 @@ import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    FontAwesomeModule
+    FontAwesomeModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.0.0",
+    "@angular/animations": "^14.0.5",
     "@angular/cdk": "^14.0.4",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
@@ -27,6 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@types/socket.io-client": "^3.0.0",
     "ajv-keywords": "^5.1.0",
+    "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "socket.io": "^4.5.1",
     "socket.io-client": "^4.5.1",

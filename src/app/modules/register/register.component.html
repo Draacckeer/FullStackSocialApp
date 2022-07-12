@@ -1,18 +1,58 @@
 <div>
   <div class="container-register">
     <mat-card class="container-register-card">
-      <mat-form-field appearance="fill" style="width: 350px; margin-top: 10px;">
-        <mat-label>Email</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field appearance="fill" style="width: 350px;">
-        <mat-label>Password</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <button mat-raised-button color="accent" style="width: 350px; height: 50px;" [routerLink]="'/publications'">Register</button>
-      <div class="line"></div>
-      Have an account?
-      <button mat-button color="primary" style="margin-top: 10px;" [routerLink]="''">Go to Login</button>
+      <form [formGroup]="userFormGroup">
+        <div style="margin-top: 5px;"></div>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput autocomplete="off" formControlName="username">
+          <mat-error *ngIf="userFormGroup.get('username')?.hasError('required')">
+            Username is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('username')?.hasError('minlength')">
+            Username must be at least <strong>6</strong> characters long
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('username')?.hasError('maxlength')">
+            Username must be at most <strong>20</strong> characters long
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput autocomplete="off" formControlName="email">
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('minlength')">
+            Email must be at least <strong>6</strong> characters long
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('email') &&
+           !userFormGroup.get('email')?.hasError('minlength') &&
+           !userFormGroup.get('email')?.hasError('maxlength')">
+            Email is <strong>invalid</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('email')?.hasError('maxlength')">
+            Email must be at most <strong>20</strong> characters long
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput autocomplete="off" type="password" formControlName="password">
+          <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('password')?.hasError('minlength')">
+            Password must be at least <strong>6</strong> characters long
+          </mat-error>
+          <mat-error *ngIf="userFormGroup.get('password')?.hasError('maxlength')">
+            Password must be at most <strong>20</strong> characters long
+          </mat-error>
+        </mat-form-field>
+        <div style="margin-top: 5px;"></div>
+        <button mat-raised-button color="accent" style="width: 350px; height: 50px;" (click)="register()">Register</button>
+        <div class="line"></div>
+        Have an account?
+        <button mat-button color="primary" style="margin-top: 10px;" [routerLink]="''">Go to Login</button>
+      </form>
     </mat-card>
   </div>
 </div>
