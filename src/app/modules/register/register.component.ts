@@ -42,14 +42,13 @@ export class RegisterComponent{
             }).subscribe({
               next: (response: any) => {
                 localStorage.setItem('token',response.token);
-                this.toastr.success('You have successfully registered');
+                this.toastr.success('You have successfully registered', 'Success');
                 this.route.navigate(['/publications']);
               },
               error: () => {
                 this.toastr.error('Something went wrong');
               }
           })
-          console.log("User registered");
         },
         error: () => {
           this.toastr.error('Error while registering');
