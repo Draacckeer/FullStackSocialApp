@@ -3,5 +3,5 @@
   <div style="flex: 1 1 auto"></div>
   <!-- App Options -->
   <a mat-button [routerLink]="'/publications'">Publications</a>
-  <a mat-button [routerLink]="'/'">Logout</a>
+  <a mat-button (click)="logout()">Logout</a>
 </mat-toolbar>
