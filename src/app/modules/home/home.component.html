@@ -8,18 +8,26 @@
     </div>
     <div class="container-right">
       <mat-card class="container-right-card">
-        <mat-form-field appearance="fill" style="width: 350px; margin-top: 10px;">
-          <mat-label>Email</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field appearance="fill" style="width: 350px;">
-          <mat-label>Password</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <button mat-raised-button color="primary" style="width: 350px; height: 50px;" [routerLink]="'/publications'">Login</button>
-        <a href="#" style="margin-top: 15px; display: block;">Forgot your password?</a>
-        <div class="line"></div>
-        <p>Don't have an account? <button mat-button color="accent" [routerLink]="'/register'">Sign up</button></p>
+        <form [formGroup]="userFormGroup">
+          <mat-form-field appearance="fill" style="width: 350px; margin-top: 10px;">
+            <mat-label>Username</mat-label>
+            <input matInput autocomplete="off" formControlName="username">
+            <mat-error *ngIf="userFormGroup.get('username')?.hasError('required')">
+              Username is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill" style="width: 350px;">
+            <mat-label>Password</mat-label>
+            <input matInput autocomplete="off" type="password" formControlName="password">
+            <mat-error *ngIf="userFormGroup.get('password')?.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" style="width: 350px; height: 50px;" (click)="login()">Login</button>
+          <a href="#" style="margin-top: 15px; display: block;">Forgot your password?</a>
+          <div class="line"></div>
+          <p>Don't have an account? <button mat-button color="accent" [routerLink]="'/register'">Sign up</button></p>
+        </form>
       </mat-card>
     </div>
 

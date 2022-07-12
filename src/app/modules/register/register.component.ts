@@ -22,11 +22,6 @@ export class RegisterComponent{
   }
 
   register(){
-    this.usersService.registerUser({
-      next: () => {
-
-      }
-    })
     if(this.userFormGroup.valid) {
       let role: string[] = ["ROLE_USER"];
       this.usersService.registerUser({
@@ -46,17 +41,17 @@ export class RegisterComponent{
                 this.route.navigate(['/publications']);
               },
               error: () => {
-                this.toastr.error('Something went wrong');
+                this.toastr.error('Something went wrong', 'Error');
               }
           })
         },
         error: () => {
-          this.toastr.error('Error while registering');
+          this.toastr.error('Error while registering', 'Error');
         }
       });
     }
     else{
-      this.toastr.error('Please fill all the fields');
+      this.toastr.error('Please fill all the fields', 'Error');
     }
 
   }
