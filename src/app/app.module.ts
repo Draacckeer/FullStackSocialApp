@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ToastrModule} from "ngx-toastr";
+import { JwtInterceptor } from './auth/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,14 @@ import {ToastrModule} from "ngx-toastr";
       preventDuplicates: true
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
