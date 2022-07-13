@@ -1,6 +1,8 @@
 export interface PublicationComment {
   id: number;
   comment: string;
+  userid: number;
+  username: string;
   publication: number;
   line: number;
   level: number;

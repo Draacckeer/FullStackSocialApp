@@ -4,6 +4,7 @@ import {PublicationsService} from "../../services/publications.service";
 import {PublicationComment} from "../../models/publicationComment";
 import {PublicationMessagesService} from "../../services/publicationMessages.service";
 import io from "socket.io-client";
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-publications',
@@ -21,6 +22,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   publicationCommentsData: PublicationComment[] = [] as PublicationComment[];
   constructor(
     private publicationsService: PublicationsService,
+    private usersService: UsersService,
     private publicationMessagesService: PublicationMessagesService,
     private elementRef: ElementRef
               ) {

@@ -12,10 +12,7 @@
     <br>
     <mat-card-content>
       <div style="margin-bottom: 20px;">
-        <div style="margin-left: 20px;"> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-          galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-          also the leap into electronic typesetting, remaining essentially unchanged. </div>
+        <div style="margin-left: 20px;"> {{publication.content}} </div>
       </div>
       <div class="line"></div>
       <div style="background-color: #f0f2f5" *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
