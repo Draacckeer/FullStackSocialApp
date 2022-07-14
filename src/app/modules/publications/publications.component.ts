@@ -36,10 +36,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
       this.publicationCommentsArranged[this.publicationsData.findIndex(x=>x.id==data.publication)].push(data);
     });
     this.socket.on('addNewPublication', (data: Publication)=>{
-      console.log(data);
       this.publicationsData.push(data);
       this.publicationCommentsArranged.push([]);
-      console.log(data);
     });
 
 
@@ -54,34 +52,35 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   retrievePublications(){
     this.publicationCommentsArranged = [];
-    this.publicationsService.getAll().subscribe((response: any)=>{
-      this.publicationsData = response;
+    this.publicationsService.getAll().subscribe({
+      next: (response: any)=>{
+        this.publicationsData = response;
 
-
-      this.publicationMessagesService.getAll().subscribe((response2: any)=>{
-        this.publicationCommentsData = response2;
-        for(let publication of this.publicationsData){
-          this.publicationCommentsArranged.push(this.publicationCommentsData.filter(x=>x.publication==publication.id));
-          let inputs = document.querySelectorAll("textarea");
-          inputs.forEach(input => {
-            input.addEventListener("keydown", (e)=>{
-              if(e.key == "Enter" && !e.shiftKey){
-                e.preventDefault();
-              }
+        this.publicationMessagesService.getAll().subscribe({
+          next: (response2: any)=>{
+            this.publicationCommentsData = response2;
+            let inputs = document.querySelectorAll("textarea");
+            inputs.forEach(input => {
+              input.addEventListener("keydown", (e)=>{
+                if(e.key == "Enter" && !e.shiftKey){
+                  e.preventDefault();
+                }
+              });
             });
+            for(let publication of this.publicationsData){
+              this.publicationCommentsArranged.push(this.publicationCommentsData.filter(x=>x.publication==publication.id));
 
-          });
-
-          document.getElementById("input" + publication.id)!
-            .addEventListener("keyup", (e) => {
-              e.preventDefault();
-              if (e.key == "Enter" && !e.shiftKey) {
-                document.getElementById("button" + publication.id)!.click();
-              }
-            });
-        }
-
-      })
+              document.getElementById("input" + publication.id)!
+                .addEventListener("keyup", (e) => {
+                  e.preventDefault();
+                  if (e.key == "Enter" && !e.shiftKey) {
+                    document.getElementById("button" + publication.id)!.click();
+                  }
+                });
+            }
+          }
+        });
+      }
     })
   }
 
@@ -92,7 +91,6 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
         this.publicationCreate.username = response.username;
         this.publicationsService.create(this.publicationCreate).subscribe({
           next: (response2: any)=>{
-            console.log(response2);
             this.publicationsData.push(response2);
             this.publicationCreate = {} as Publication;
             this.socket.emit('addNewPublication', response2);
