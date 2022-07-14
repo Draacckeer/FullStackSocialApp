@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {User} from "../models/user";
+import {UserPublication} from "../models/userPublication";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,20 @@ export class UsersService {
 
   registerUser(item: any): Observable<User> {
     return this.http.post<User>(`${this.basePath}/sign-up`, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getUserPublicationByToken(): Observable<UserPublication> {
+    return this.http.get<UserPublication>(`${this.basePath}/get-user-publication-by-token`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getUserIdByToken(): Observable<Number> {
+    return this.http.get<Number>(`${this.basePath}/get-user-id-by-token`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));

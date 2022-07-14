@@ -13,7 +13,7 @@ import {UsersService} from "../../services/users.service";
 })
 
 export class PublicationsComponent implements OnInit, AfterViewInit{
-  dataTest: number = 0;
+  publicationCreate: Publication = {} as Publication;
   socket: any;
   publicationCommentCreate: PublicationComment = {} as PublicationComment;
   comment: string[] = [] as string[];
@@ -32,12 +32,15 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   ngOnInit() {
     this.retrievePublications();
     this.socket = io('http://localhost:3000/');
-    this.socket.on('data', (data: any)=>{
-      this.dataTest = data.x;
-    })
     this.socket.on('addNewPublicationComment', (data: PublicationComment)=>{
       this.publicationCommentsArranged[this.publicationsData.findIndex(x=>x.id==data.publication)].push(data);
-    })
+    });
+    this.socket.on('addNewPublication', (data: Publication)=>{
+      console.log(data);
+      this.publicationsData.push(data);
+      this.publicationCommentsArranged.push([]);
+      console.log(data);
+    });
 
 
   }
@@ -46,11 +49,6 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#f0f2f5';
-  }
-
-  testSocketIo(){
-    this.socket.emit('increment', 1);
-
   }
 
 
@@ -87,21 +85,46 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
     })
   }
 
+  addNewPublication(){
+    this.usersService.getUserPublicationByToken().subscribe({
+      next: (response: any)=>{
+        this.publicationCreate.userid = response.id;
+        this.publicationCreate.username = response.username;
+        this.publicationsService.create(this.publicationCreate).subscribe({
+          next: (response2: any)=>{
+            console.log(response2);
+            this.publicationsData.push(response2);
+            this.publicationCreate = {} as Publication;
+            this.socket.emit('addNewPublication', response2);
+            this.publicationCommentsArranged.push([]);
+          }
+        });
+      }
+    });
+  }
+
   addNewComment(index: number, publicationId: number){
-    this.publicationCommentCreate.comment = this.comment[index];
-    this.publicationCommentCreate.publication = publicationId;
-    this.publicationCommentCreate.line = 0;
-    this.publicationCommentCreate.level = 0;
-    this.publicationCommentCreate.level1 = 0;
-    this.publicationCommentCreate.level2 = 0;
-    this.publicationCommentCreate.level3 = 0;
-    console.log(this.publicationCommentCreate.comment);
-    this.publicationMessagesService.create(this.publicationCommentCreate).subscribe((response: any)=>{
-      console.log(response);
-      this.publicationCommentsArranged[index].push(response);
-      this.publicationCommentCreate = {} as PublicationComment;
-      this.comment[index] = '';
-      this.socket.emit('addNewPublicationComment', response);
-    })
+    this.usersService.getUserPublicationByToken().subscribe({
+      next: (response: any)=>{
+        this.publicationCommentCreate.userid = response.id;
+        this.publicationCommentCreate.username = response.username;
+        this.publicationCommentCreate.publication = publicationId;
+        this.publicationCommentCreate.comment = this.comment[index];
+        this.publicationCommentCreate.line = 0;
+        this.publicationCommentCreate.level = 0;
+        this.publicationCommentCreate.level1 = 0;
+        this.publicationCommentCreate.level2 = 0;
+        this.publicationCommentCreate.level3 = 0;
+        this.publicationMessagesService.create(this.publicationCommentCreate).subscribe({
+            next: (response2: any)=>{
+              this.publicationCommentsArranged[index].push(response2);
+              this.publicationCommentCreate = {} as PublicationComment;
+              this.comment[index] = "";
+              this.socket.emit('addNewPublicationComment', response2);
+            }
+        });
+      }
+    });
+
   }
 }
