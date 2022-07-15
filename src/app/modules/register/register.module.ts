@@ -7,6 +7,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {MatRadioModule} from "@angular/material/radio";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 const registerRoutes: Route[] = [
   {
@@ -27,6 +29,8 @@ const registerRoutes: Route[] = [
     MatButtonModule,
     ReactiveFormsModule,
     CommonModule,
+    MatRadioModule,
+    FontAwesomeModule,
   ]
 })
 
