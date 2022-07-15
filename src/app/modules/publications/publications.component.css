@@ -26,7 +26,8 @@
   font-weight: 300;
   background-color: #f0f2f5;
   outline: none;
-  border: none; width: calc(100% - 20px);
+  border: none;
+  width: calc(100% - 20px);
   display: inline-block;
   overflow-y: hidden
 }
