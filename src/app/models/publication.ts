@@ -3,6 +3,5 @@ export interface Publication {
   userid: number;
   username: string;
   userAvatar: string;
-  title: string;
   content: string;
 }

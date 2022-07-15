@@ -22,17 +22,17 @@ const publicationsRoutes: Route[] = [
   declarations: [
     PublicationsComponent,
   ],
-    imports: [
-        RouterModule.forChild(publicationsRoutes),
-        NavbarModule,
-        MatCardModule,
-        CommonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatButtonModule,
-        MatListModule,
-    ]
+  imports: [
+      RouterModule.forChild(publicationsRoutes),
+      NavbarModule,
+      MatCardModule,
+      CommonModule,
+      MatFormFieldModule,
+      MatInputModule,
+      FormsModule,
+      MatButtonModule,
+      MatListModule,
+  ]
 })
 
 export class PublicationsModule
