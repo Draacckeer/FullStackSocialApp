@@ -8,6 +8,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {MatListModule} from "@angular/material/list";
 
 
 const publicationsRoutes: Route[] = [
@@ -21,16 +22,17 @@ const publicationsRoutes: Route[] = [
   declarations: [
     PublicationsComponent,
   ],
-  imports: [
-    RouterModule.forChild(publicationsRoutes),
-    NavbarModule,
-    MatCardModule,
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-  ]
+    imports: [
+        RouterModule.forChild(publicationsRoutes),
+        NavbarModule,
+        MatCardModule,
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatListModule,
+    ]
 })
 
 export class PublicationsModule

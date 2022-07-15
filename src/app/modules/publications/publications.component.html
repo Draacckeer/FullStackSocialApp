@@ -21,12 +21,16 @@
         <div style="margin-left: 20px;"> {{publication.content}} </div>
       </div>
       <div class="line"></div>
-      <div style="background-color: #f0f2f5" *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
-        <br>
-        <div style="margin-left: 20px;">{{publicationComment.id}}</div>
-        <div style="margin-left: 20px;">User: {{publicationComment.username}}</div>
-        <div style="margin-left: 20px;">{{publicationComment.comment}}</div>
-        <div class="line-comments"></div>
+      <mat-list>
+        <div mat-subheader>Comments</div>
+        <mat-list-item style="flex-direction: row;" *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
+          <br>
+          <div style="position: relative">User: {{publicationComment.username}}</div>
+          <div class="comment" style="flex-grow: 1; flex-basis: 0;">{{publicationComment.comment}}</div>
+        </mat-list-item>
+      </mat-list>
+      <div *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
+
       </div>
       <div>
         <div style="padding-left: 30px; padding-right: 30px;">
