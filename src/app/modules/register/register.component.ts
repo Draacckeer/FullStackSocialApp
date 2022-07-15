@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 })
 
 export class RegisterComponent{
+  userAvatar: string = "ghost";
   userFormGroup = new FormGroup({
     username: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
     password: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
@@ -27,6 +28,7 @@ export class RegisterComponent{
       this.usersService.registerUser({
         username: this.userFormGroup.get('username')?.value,
         email: this.userFormGroup.get('email')?.value,
+        avatar: this.userAvatar,
         password: this.userFormGroup.get('password')?.value,
         roles: role
       }).subscribe( {

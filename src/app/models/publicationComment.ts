@@ -3,6 +3,7 @@ export interface PublicationComment {
   comment: string;
   userid: number;
   username: string;
+  userAvatar: string;
   publication: number;
   line: number;
   level: number;

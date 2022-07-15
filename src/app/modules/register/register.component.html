@@ -48,13 +48,13 @@
           </mat-error>
         </mat-form-field>
         <div></div>
-        <mat-radio-group>
-          <mat-radio-button value="1"><img style="width: 60px; margin-right: 20px;" src="/assets/img/ghost.png" alt="ghost"/></mat-radio-button>
-          <mat-radio-button value="2"><img style="width: 60px; margin-right: 20px;" src="/assets/img/apple.png" alt="apple"/></mat-radio-button>
-          <mat-radio-button value="2"><img style="width: 60px; margin-right: 20px;" src="/assets/img/wizard.png" alt="wizard"/></mat-radio-button>
-          <mat-radio-button value="3"><img style="width: 60px; margin-right: 20px;" src="/assets/img/boy.png" alt="boy"/></mat-radio-button>
-          <mat-radio-button value="3"><img style="width: 60px; margin-right: 20px;" src="/assets/img/dragon.png" alt="dragon"/></mat-radio-button>
-          <mat-radio-button value="3"><img style="width: 60px; margin-right: 20px;" src="/assets/img/witch.png" alt="witch"/></mat-radio-button>
+        <mat-radio-group [(ngModel)]="userAvatar" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button value="ghost"><img style="width: 60px; margin-right: 20px;" src="/assets/img/ghost.png" alt="ghost"/></mat-radio-button>
+          <mat-radio-button value="apple"><img style="width: 60px; margin-right: 20px;" src="/assets/img/apple.png" alt="apple"/></mat-radio-button>
+          <mat-radio-button value="wizard"><img style="width: 60px; margin-right: 20px;" src="/assets/img/wizard.png" alt="wizard"/></mat-radio-button>
+          <mat-radio-button value="boy"><img style="width: 60px; margin-right: 20px;" src="/assets/img/boy.png" alt="boy"/></mat-radio-button>
+          <mat-radio-button value="dragon"><img style="width: 60px; margin-right: 20px;" src="/assets/img/dragon.png" alt="dragon"/></mat-radio-button>
+          <mat-radio-button value="witch"><img style="width: 60px; margin-right: 20px;" src="/assets/img/witch.png" alt="witch"/></mat-radio-button>
         </mat-radio-group>
         <div style="margin-top: 5px;"></div>
         <button mat-raised-button color="accent" style="width: 350px; height: 50px;" (click)="register()">Register</button>

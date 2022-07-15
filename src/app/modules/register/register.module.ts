@@ -5,7 +5,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {MatRadioModule} from "@angular/material/radio";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
@@ -21,17 +21,18 @@ const registerRoutes: Route[] = [
   declarations: [
     RegisterComponent,
   ],
-  imports: [
-    RouterModule.forChild(registerRoutes),
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    CommonModule,
-    MatRadioModule,
-    FontAwesomeModule,
-  ]
+    imports: [
+        RouterModule.forChild(registerRoutes),
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        CommonModule,
+        MatRadioModule,
+        FontAwesomeModule,
+        FormsModule,
+    ]
 })
 
 export class RegisterModule

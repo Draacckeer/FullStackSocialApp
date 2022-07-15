@@ -11,6 +11,7 @@
     <mat-card-header>
       <mat-card-title>
         <br>
+        <img style="width: 40px;" src="/assets/img/{{publication.userAvatar}}.png" alt="ghost"/>
         {{publication.username}}
         {{publication.title}}
       </mat-card-title>
@@ -25,7 +26,8 @@
         <div mat-subheader>Comments</div>
         <mat-list-item style="flex-direction: row;" *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
           <br>
-          <div style="position: relative">User: {{publicationComment.username}}</div>
+          <div style="position: relative; margin-right: 10px;"><img style="width: 40px;" src="/assets/img/{{publicationComment.userAvatar}}.png"
+                                                                    alt="{{publicationComment.userAvatar}}"/> {{publicationComment.username}}</div>
           <div class="comment" style="flex-grow: 1; flex-basis: 0;">{{publicationComment.comment}}</div>
         </mat-list-item>
       </mat-list>

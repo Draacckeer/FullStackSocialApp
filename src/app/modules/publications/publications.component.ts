@@ -88,6 +88,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
     this.usersService.getUserPublicationByToken().subscribe({
       next: (response: any)=>{
         this.publicationCreate.userid = response.id;
+        this.publicationCreate.userAvatar = response.avatar;
         this.publicationCreate.username = response.username;
         this.publicationsService.create(this.publicationCreate).subscribe({
           next: (response2: any)=>{
@@ -106,6 +107,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
       next: (response: any)=>{
         this.publicationCommentCreate.userid = response.id;
         this.publicationCommentCreate.username = response.username;
+        this.publicationCommentCreate.userAvatar = response.avatar;
         this.publicationCommentCreate.publication = publicationId;
         this.publicationCommentCreate.comment = this.comment[index];
         this.publicationCommentCreate.line = 0;
