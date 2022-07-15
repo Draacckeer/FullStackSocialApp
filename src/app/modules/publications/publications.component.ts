@@ -40,6 +40,13 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
       this.publicationCommentsArranged.push([]);
     });
 
+    document.getElementById("publicationContentAddTextarea")!
+      .addEventListener("keyup", (e) => {
+        e.preventDefault();
+        if (e.key == "Enter" && !e.shiftKey) {
+          document.getElementById("publicationContentAddButton")!.click();
+        }
+      });
 
   }
 
@@ -47,6 +54,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#f0f2f5';
+
+
   }
 
 
