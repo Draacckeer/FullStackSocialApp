@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
 import {Publication} from "../../models/publication";
 import {PublicationsService} from "../../services/publications.service";
 import {PublicationComment} from "../../models/publicationComment";
-import {PublicationMessagesService} from "../../services/publicationMessages.service";
+import {PublicationCommentsService} from "../../services/publicationComments.service";
 import io from "socket.io-client";
 import {UsersService} from "../../services/users.service";
 import {formatDate} from "@angular/common";
@@ -24,7 +24,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   constructor(
     private publicationsService: PublicationsService,
     private usersService: UsersService,
-    private publicationMessagesService: PublicationMessagesService,
+    private publicationMessagesService: PublicationCommentsService,
     private elementRef: ElementRef
               ) {
 

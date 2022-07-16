@@ -6,7 +6,7 @@ import {PublicationComment} from "../models/publicationComment";
 @Injectable({
   providedIn: 'root'
 })
-export class PublicationMessagesService {
+export class PublicationCommentsService {
 
   // Endpoint
   basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/publication_comments';
