@@ -4,4 +4,6 @@ export interface Publication {
   username: string;
   userAvatar: string;
   content: string;
+  createdAt: string;
+  updatedAt: string;
 }

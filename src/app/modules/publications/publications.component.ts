@@ -112,6 +112,9 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   }
 
   addNewComment(index: number, publicationId: number){
+    if(this.comment[index] == undefined || this.comment[index].replace(/\s/g,"") == ""){
+      return;
+    }
     this.usersService.getUserPublicationByToken().subscribe({
       next: (response: any)=>{
         this.publicationCommentCreate.userid = response.id;
