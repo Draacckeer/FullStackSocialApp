@@ -89,19 +89,15 @@
       <div mat-subheader style="color: #0000008a; font-weight: 500;">Add a new comment</div>
       <div>
         <div style="padding-left: 30px; padding-right: 30px;">
-          <div style="display: flex; flex-direction: row">
-            <div style="flex-grow: 1; flex-basis: 0;">
-              <div style="display: flex; flex-direction: row;">
-                <div class="form" style="flex-grow: 1;">
-                  <div style="padding: 8px 12px;">
-                    <textarea class="comment-textarea" [id]="'input' + publication.id" cdkTextareaAutosize placeholder="Add a new comment here..."
-                              [(ngModel)]="comment[publicationsData.indexOf(publication)]"></textarea>
-                  </div>
-                </div>
-                <button [id]="'button' + publication.id" mat-button color="primary"
-                        (click)="addNewComment(publicationsData.indexOf(publication), publication.id)">Comment</button>
+          <div style="display: flex; flex-direction: row;">
+            <div class="form" style="flex-grow: 1;">
+              <div style="padding: 8px 12px;">
+                <textarea class="comment-textarea" [id]="'input' + publication.id" cdkTextareaAutosize placeholder="Add a new comment here..."
+                          [(ngModel)]="comment[publicationsData.indexOf(publication)]"></textarea>
               </div>
             </div>
+            <button [id]="'button' + publication.id" mat-button color="primary"
+                    (click)="addNewComment(publicationsData.indexOf(publication), publication.id)">Comment</button>
           </div>
         </div>
       </div>
