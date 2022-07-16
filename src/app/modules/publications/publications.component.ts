@@ -44,10 +44,6 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
     });
   }
 
-  formatDateCreatedAt(date: string){
-    console.log(formatDate(date, "MMMM d, 'at' h:mm a", 'en-US'));
-  }
-
   ngAfterViewInit() {
 
     this.elementRef.nativeElement.ownerDocument
