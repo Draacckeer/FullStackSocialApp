@@ -63,8 +63,8 @@ export class UsersService {
         catchError(this.handleError));
   }
 
-  getAllUsers(): Observable<User> {
-    return this.http.get<User>(`${this.basePath}/get-all`, this.httpOptions)
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.basePath}/get-all`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));

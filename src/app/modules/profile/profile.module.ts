@@ -3,7 +3,6 @@ import {ProfileComponent} from "./profile.component";
 import {NgModule} from "@angular/core";
 import {NavbarModule} from "../navbar/navbar.module";
 
-
 const profileRoutes: Routes = [
   {
     path: '',
