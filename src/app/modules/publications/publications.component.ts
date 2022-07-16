@@ -24,7 +24,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   constructor(
     private publicationsService: PublicationsService,
     private usersService: UsersService,
-    private publicationMessagesService: PublicationCommentsService,
+    private publicationCommentsService: PublicationCommentsService,
     private elementRef: ElementRef
               ) {
 
@@ -65,7 +65,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
       next: (response: any)=>{
         this.publicationsData = response;
 
-        this.publicationMessagesService.getAll().subscribe({
+        this.publicationCommentsService.getAll().subscribe({
           next: (response2: any)=>{
             this.publicationCommentsData = response2;
             let inputs = document.querySelectorAll("textarea");
@@ -86,6 +86,9 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
                     document.getElementById("button" + publication.id)!.click();
                   }
                 });
+            }
+            for(let publicationComment of this.publicationCommentsData){
+              publicationComment.createdAt = formatDate(publicationComment.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
             }
           }
         });
@@ -127,7 +130,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
         this.publicationCommentCreate.level1 = 0;
         this.publicationCommentCreate.level2 = 0;
         this.publicationCommentCreate.level3 = 0;
-        this.publicationMessagesService.create(this.publicationCommentCreate).subscribe({
+        this.publicationCommentsService.create(this.publicationCommentCreate).subscribe({
             next: (response2: any)=>{
               this.publicationCommentsArranged[index].push(response2);
               this.publicationCommentCreate = {} as PublicationComment;

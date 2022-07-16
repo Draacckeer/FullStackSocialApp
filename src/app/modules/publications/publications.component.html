@@ -75,7 +75,7 @@
         <img style="width: 40px;" src="/assets/img/{{publication.userAvatar}}.png" alt="{{publication.userAvatar}}"/>
         <div>
           <div style="font-weight: bold; font-size: 15px;">{{publication.username}}</div>
-          <div style="font-size: 12px; color: #888888"> {{publication.createdAt}}</div>
+          <div class="publication-created-at"> {{publication.createdAt}}</div>
         </div>
       </mat-card-title>
     </mat-card-header>
@@ -98,7 +98,8 @@
                               [(ngModel)]="comment[publicationsData.indexOf(publication)]"></textarea>
                   </div>
                 </div>
-                <button [id]="'button' + publication.id" mat-button color="primary" (click)="addNewComment(publicationsData.indexOf(publication), publication.id)">Comment</button>
+                <button [id]="'button' + publication.id" mat-button color="primary"
+                        (click)="addNewComment(publicationsData.indexOf(publication), publication.id)">Comment</button>
               </div>
             </div>
           </div>
@@ -107,13 +108,21 @@
       <!-- Comments -->
       <mat-list style="padding-bottom: 15px;">
         <div mat-subheader>Comments</div>
-        <mat-list-item style="flex-direction: row; height: auto; max-width: 450px; margin-top: 5px;" *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
-
-          <div style="position: relative; margin-right: 10px; align-self: flex-start"><img style="width: 40px;" src="/assets/img/{{publicationComment.userAvatar}}.png"
-                                                                    alt="{{publicationComment.userAvatar}}"/> </div>
-          <div class="comment" style="flex-grow: 1; flex-basis: 0;">
-            <div style="font-weight: bold; font-size: 12px;">{{publicationComment.username}}</div>
-            <div>{{publicationComment.comment}}</div>
+        <mat-list-item style="flex-direction: row; height: auto; max-width: 450px; margin-top: 5px;"
+                       *ngFor="let publicationComment of publicationCommentsArranged[publicationsData.indexOf(publication)]">
+          <div style="position: relative; margin-right: 10px; align-self: flex-start">
+            <img style="width: 40px;" src="/assets/img/{{publicationComment.userAvatar}}.png" alt="{{publicationComment.userAvatar}}"/>
+          </div>
+          <div style="flex-direction: column;">
+            <div class="comment" style="flex-grow: 1; flex-basis: 0;">
+              <div style="font-weight: bold; font-size: 12px;">{{publicationComment.username}}</div>
+              <div>{{publicationComment.comment}}</div>
+            </div>
+            <div style="flex-direction: row; display: flex">
+              <div class="publication-created-at" style="margin-right: 10px; margin-left: 10px;"><strong>Like</strong></div>
+              <div class="publication-created-at" style="margin-right: 10px;"><strong>Reply</strong></div>
+              <div class="publication-created-at">{{publicationComment.createdAt}}</div>
+            </div>
           </div>
         </mat-list-item>
       </mat-list>

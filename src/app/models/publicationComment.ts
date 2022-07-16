@@ -10,4 +10,6 @@ export interface PublicationComment {
   level1: number;
   level2: number;
   level3: number;
+  createdAt: string;
+  updatedAt: string;
 }
