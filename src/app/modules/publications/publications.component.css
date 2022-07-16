@@ -6,7 +6,8 @@
 
 .line{
   border-bottom: 1px solid darkgray;
-  width: 450px;
+  margin: 0 auto;
+  width: 420px;
 }
 
 [placeholder]:empty::before {
@@ -36,9 +37,11 @@
   display: inline-block;
   padding: 10px;
   background-color: #f0f2f5;
+  align-self: flex-start;
   outline: none;
   border: none;
   border-radius: 20px;
+  word-break: break-word;
 }
 
 /* width */
