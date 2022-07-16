@@ -5,6 +5,7 @@ import {PublicationComment} from "../../models/publicationComment";
 import {PublicationMessagesService} from "../../services/publicationMessages.service";
 import io from "socket.io-client";
 import {UsersService} from "../../services/users.service";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-publications',
@@ -31,6 +32,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.retrievePublications();
+    let date = "2022-07-16 02:16:34.38";
+    // July 16, at 2:16:34 AM
     this.socket = io('http://localhost:3000/');
     this.socket.on('addNewPublicationComment', (data: PublicationComment)=>{
       this.publicationCommentsArranged[this.publicationsData.findIndex(x=>x.id==data.publication)].push(data);
@@ -39,9 +42,10 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
       this.publicationsData.push(data);
       this.publicationCommentsArranged.push([]);
     });
+  }
 
-
-
+  formatDateCreatedAt(date: string){
+    console.log(formatDate(date, "MMMM d, 'at' h:mm a", 'en-US'));
   }
 
   ngAfterViewInit() {
@@ -77,8 +81,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
               });
             });
             for(let publication of this.publicationsData){
+              publication.createdAt = formatDate(publication.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
               this.publicationCommentsArranged.push(this.publicationCommentsData.filter(x=>x.publication==publication.id));
-
               document.getElementById("input" + publication.id)!
                 .addEventListener("keyup", (e) => {
                   e.preventDefault();
