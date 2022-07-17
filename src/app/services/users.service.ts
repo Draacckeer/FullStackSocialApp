@@ -72,6 +72,13 @@ export class UsersService {
         catchError(this.handleError));
   }
 
+  unlikeUserIdByToken(id: number): Observable<any>{
+    return this.http.post<any>(`${this.basePath}/unlike-user-id-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
   getAllUsers(): Observable<UserResponse[]> {
     return this.http.get<UserResponse[]>(`${this.basePath}/get-all`, this.httpOptions)
       .pipe(

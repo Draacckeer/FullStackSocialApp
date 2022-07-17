@@ -1,0 +1,17 @@
+.heart-disabled {
+  color: #ccc;
+}
+.beat{
+  transform: scale(2);
+}
+@keyframes beat-animation {
+  0% {
+    font-size: 14px;
+  }
+  50% {
+    font-size: 18px;
+  }
+  100% {
+    font-size: 14px;
+  }
+}

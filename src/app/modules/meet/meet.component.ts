@@ -1,8 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {UsersService} from "../../services/users.service";
-import {User} from "../../models/user";
-import {UserPublication} from "../../models/userPublication";
 import {UserResponse} from "../../models/userResponse";
+import {faHeart} from "@fortawesome/free-solid-svg-icons";
 
 interface UserResponseExtends extends UserResponse {
   isLiked: boolean;
@@ -15,6 +14,7 @@ interface UserResponseExtends extends UserResponse {
 })
 
 export class MeetComponent implements OnInit {
+  faHeart = faHeart;
   userMe: UserResponse = {} as UserResponse;
   users: UserResponseExtends[] = [] as UserResponseExtends[];
   constructor(private usersService: UsersService) {
@@ -42,13 +42,35 @@ export class MeetComponent implements OnInit {
 
   }
 
-  likeUser(id: number) {
-    this.usersService.likeUserIdByToken(id).subscribe({
-      next: (response: any) => {
-        console.log(response);
+  likeUser(id: number, user: UserResponseExtends) {
 
-      }
-    })
+
+    console.log("likeUser");
+    if (!user.isLiked) {
+      this.usersService.likeUserIdByToken(id).subscribe({
+        next: () => {
+          document.getElementById("faIcon" + id)!.children[0].classList.add("fa-beat");
+          user.isLiked = true;
+          user.likes++;
+        }
+      })
+    }
+    else if(user.isLiked) {
+      this.usersService.unlikeUserIdByToken(id).subscribe({
+        next: () => {
+          document.getElementById("faIcon" + id)!.children[0].classList.remove("fa-beat");
+          user.isLiked = false;
+          user.likes--;
+        }
+      })
+    }
+  }
+
+  beat() {
+
+    console.log("beat");
+    return;
+
   }
 
 }

@@ -6,7 +6,7 @@ export interface UserResponse {
   username: string;
   email: string;
   avatar: string;
-  likes: string;
+  likes: number;
   userLikes: UserLikes[];
   roles: Roles[];
 }
