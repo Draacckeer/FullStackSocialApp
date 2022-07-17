@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {User} from "../models/user";
 import {UserPublication} from "../models/userPublication";
+import {UserResponse} from "../models/userResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class UsersService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-    })
+    }),
+
   }
 
   constructor(private http: HttpClient) { }
@@ -56,15 +58,22 @@ export class UsersService {
         catchError(this.handleError));
   }
 
-  getUserIdByToken(): Observable<Number> {
-    return this.http.get<Number>(`${this.basePath}/get-user-id-by-token`, this.httpOptions)
+  getUserByToken(): Observable<UserResponse> {
+    return this.http.get<UserResponse>(`${this.basePath}/get-user-by-token`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
-  getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.basePath}/get-all`, this.httpOptions)
+  likeUserIdByToken(id: number): Observable<any>{
+    return this.http.post<any>(`${this.basePath}/like-user-id-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getAllUsers(): Observable<UserResponse[]> {
+    return this.http.get<UserResponse[]>(`${this.basePath}/get-all`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));

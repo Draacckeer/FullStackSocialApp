@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {UsersService} from "../../services/users.service";
+import {UserResponse} from "../../models/userResponse";
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,15 @@ import {Component, OnInit} from "@angular/core";
 })
 
 export class ProfileComponent implements OnInit{
-  constructor() {
+  user: UserResponse = {} as UserResponse;
+  constructor(private usersService: UsersService) {
   }
 
   ngOnInit() {
+    this.usersService.getUserByToken().subscribe({
+      next: (response: UserResponse) => {
+        this.user = response;
+      }
+    })
   }
 }

@@ -2,6 +2,11 @@ import {Component, OnInit} from "@angular/core";
 import {UsersService} from "../../services/users.service";
 import {User} from "../../models/user";
 import {UserPublication} from "../../models/userPublication";
+import {UserResponse} from "../../models/userResponse";
+
+interface UserResponseExtends extends UserResponse {
+  isLiked: boolean;
+}
 
 @Component({
   selector: 'app-meet',
@@ -10,18 +15,38 @@ import {UserPublication} from "../../models/userPublication";
 })
 
 export class MeetComponent implements OnInit {
-  users: User[] = [] as User[];
+  userMe: UserResponse = {} as UserResponse;
+  users: UserResponseExtends[] = [] as UserResponseExtends[];
   constructor(private usersService: UsersService) {
   }
 
   ngOnInit() {
-    this.usersService.getAllUsers().subscribe({
-      next: (response: User[]) => {
-        this.usersService.getUserPublicationByToken().subscribe({
-          next: (response2: UserPublication) => {
-            this.users = response.filter(user => user.id !== response2.id);
+    this.usersService.getUserByToken().subscribe({
+      next: (response: UserResponse) => {
+        this.userMe = response;
+        this.usersService.getAllUsers().subscribe({
+          next: (response2: UserResponse[]) => {
+            this.usersService.getUserByToken().subscribe({
+              next: (response3: UserResponse) => {
+                response2 = response2.filter(user => user.id !== response3.id);
+                Object.assign(this.users, response2);
+                this.users.forEach(user => {
+                  user.isLiked = !!this.userMe.userLikes.find(like => like.id === user.id);
+                });
+              }
+            })
           }
         })
+      }
+    })
+
+  }
+
+  likeUser(id: number) {
+    this.usersService.likeUserIdByToken(id).subscribe({
+      next: (response: any) => {
+        console.log(response);
+
       }
     })
   }

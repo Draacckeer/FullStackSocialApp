@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {UsersService} from "../../services/users.service";
 import {UserPublication} from "../../models/userPublication";
+import {UserResponse} from "../../models/userResponse";
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +10,14 @@ import {UserPublication} from "../../models/userPublication";
 })
 
 export class NavbarComponent implements OnInit {
-  user: UserPublication = {} as UserPublication;
+  user: UserResponse = {} as UserResponse;
 
   constructor(private route: Router , private usersService: UsersService) {
   }
 
   ngOnInit() {
-    this.usersService.getUserPublicationByToken().subscribe({
-      next: (response: UserPublication) => {
+    this.usersService.getUserByToken().subscribe({
+      next: (response: UserResponse) => {
         this.user = response;
       }
     })
