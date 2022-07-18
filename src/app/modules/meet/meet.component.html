@@ -16,11 +16,13 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button color="accent" (click)="likeUser(user.id, user)">{{user.likes}}
-            <fa-icon [class]="user.isLiked?'':'heart-disabled'" [id]="'faIcon'+user.id" [icon]="faHeart"
-                     style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1; "></fa-icon>
+          <button mat-button color="accent" (click)="likeUser(user.id, user)" style="font-size: 20px;">{{user.likes}}
+            <fa-icon [class]="user.isLiked?'':'icon-disabled'" [id]="'faIcon'+user.id" [icon]="faHeart"
+                     style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1;" ></fa-icon>
           </button>
-          <button mat-button color="primary">ADD</button>
+          <button mat-button color="primary" (click)="requestFriend(user.id, user)" style="font-size: 20px;">
+            <fa-icon [class]="user.hasRequested?'':'icon-disabled'" [icon]="faUserPlus"></fa-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

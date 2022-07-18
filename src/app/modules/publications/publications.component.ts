@@ -103,7 +103,8 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
         this.publicationCreate.userAvatar = response.avatar;
         this.publicationCreate.username = response.username;
         this.publicationsService.create(this.publicationCreate).subscribe({
-          next: (response2: any)=>{
+          next: (response2: Publication)=>{
+            response2.createdAt = formatDate(response2.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
             this.publicationsData.push(response2);
             this.publicationCreate = {} as Publication;
             this.socket.emit('addNewPublication', response2);

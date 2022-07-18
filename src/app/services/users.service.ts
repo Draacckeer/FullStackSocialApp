@@ -79,6 +79,13 @@ export class UsersService {
         catchError(this.handleError));
   }
 
+  requestFriendByToken(id: number): Observable<any> {
+    return this.http.post<any>(`${this.basePath}/request-friend-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
   getAllUsers(): Observable<UserResponse[]> {
     return this.http.get<UserResponse[]>(`${this.basePath}/get-all`, this.httpOptions)
       .pipe(
