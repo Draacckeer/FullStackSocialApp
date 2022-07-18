@@ -34,7 +34,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
     this.retrievePublications();
     let date = "2022-07-16 02:16:34.38";
     // July 16, at 2:16:34 AM
-    this.socket = io('http://localhost:3000/');
+    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
     this.socket.on('addNewPublicationComment', (data: PublicationComment)=>{
       this.publicationCommentsArranged[this.publicationsData.findIndex(x=>x.id==data.publication)].push(data);
     });
