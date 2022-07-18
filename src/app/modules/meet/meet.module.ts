@@ -20,16 +20,16 @@ const meetRoutes: Routes = [
   declarations: [
     MeetComponent,
   ],
-    imports: [
-        RouterModule.forChild(meetRoutes),
-        NavbarModule,
-        MatGridListModule,
-        CommonModule,
-        MatCardModule,
-        MatButtonModule,
-        FontAwesomeModule,
-        FlexModule,
-    ]
+  imports: [
+    RouterModule.forChild(meetRoutes),
+    NavbarModule,
+    MatGridListModule,
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    FontAwesomeModule,
+    FlexModule,
+  ]
 })
 
 export class MeetModule
