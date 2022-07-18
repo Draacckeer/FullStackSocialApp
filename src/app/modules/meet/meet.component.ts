@@ -78,6 +78,13 @@ export class MeetComponent implements OnInit {
         }
       })
     }
+    else if(user.hasRequested) {
+      this.usersService.unrequestFriendByToken(id).subscribe({
+        next: () => {
+          user.hasRequested = false;
+        }
+      })
+    }
   }
 
 }
