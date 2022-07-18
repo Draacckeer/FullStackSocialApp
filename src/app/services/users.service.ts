@@ -86,6 +86,34 @@ export class UsersService {
         catchError(this.handleError));
   }
 
+  unrequestFriendByToken(id: number): Observable<any> {
+    return this.http.post<any>(`${this.basePath}/unrequest-friend-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  acceptFriendByToken(id: number): Observable<any> {
+    return this.http.post<any>(`${this.basePath}/accept-friend-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  rejectFriendByToken(id: number): Observable<any> {
+    return this.http.post<any>(`${this.basePath}/reject-friend-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  unfriendByToken(id: number): Observable<any> {
+    return this.http.post<any>(`${this.basePath}/unfriend-by-token/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
   getAllUsers(): Observable<UserResponse[]> {
     return this.http.get<UserResponse[]>(`${this.basePath}/get-all`, this.httpOptions)
       .pipe(
