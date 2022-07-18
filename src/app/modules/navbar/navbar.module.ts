@@ -4,6 +4,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -12,13 +14,15 @@ import {CommonModule} from "@angular/common";
   exports: [
     NavbarComponent
   ],
-    imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        RouterModule,
-        CommonModule
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    RouterModule,
+    CommonModule,
+    FontAwesomeModule,
+    MatMenuModule
 
-    ],
+  ],
 })
 
 export class NavbarModule
