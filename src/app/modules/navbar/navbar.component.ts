@@ -6,6 +6,7 @@ import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import {faHouse} from "@fortawesome/free-solid-svg-icons";
 import {faUsers} from "@fortawesome/free-solid-svg-icons";
 import {faBell} from "@fortawesome/free-solid-svg-icons";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,7 @@ export class NavbarComponent implements OnInit {
   faHouse = faHouse;
   faUsers = faUsers;
   faBell = faBell;
+  faUser = faUser;
   user: UserResponse = {} as UserResponse;
   userRequests: UserResponse[] = [] as UserResponse[];
 

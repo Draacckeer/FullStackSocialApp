@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {FlexModule} from "@angular/flex-layout";
 
 const meetRoutes: Routes = [
   {
@@ -19,15 +20,16 @@ const meetRoutes: Routes = [
   declarations: [
     MeetComponent,
   ],
-  imports: [
-    RouterModule.forChild(meetRoutes),
-    NavbarModule,
-    MatGridListModule,
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    FontAwesomeModule,
-  ]
+    imports: [
+        RouterModule.forChild(meetRoutes),
+        NavbarModule,
+        MatGridListModule,
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        FontAwesomeModule,
+        FlexModule,
+    ]
 })
 
 export class MeetModule

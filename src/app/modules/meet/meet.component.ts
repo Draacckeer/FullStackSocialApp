@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {UsersService} from "../../services/users.service";
 import {UserResponse} from "../../models/userResponse";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +20,8 @@ export class MeetComponent implements OnInit {
   faUserPlus = faUserPlus;
   userMe: UserResponse = {} as UserResponse;
   users: UserResponseExtends[] = [] as UserResponseExtends[];
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService,
+              private elementRef: ElementRef) {
   }
 
   ngOnInit() {
@@ -85,6 +86,11 @@ export class MeetComponent implements OnInit {
         }
       })
     }
+  }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+      .body.style.backgroundColor = '#f0f2f5';
   }
 
 }

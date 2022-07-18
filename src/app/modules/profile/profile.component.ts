@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
 import {UsersService} from "../../services/users.service";
 import {UserResponse} from "../../models/userResponse";
 
@@ -8,9 +8,10 @@ import {UserResponse} from "../../models/userResponse";
   styleUrls: ['./profile.component.css']
 })
 
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit, AfterViewInit{
   user: UserResponse = {} as UserResponse;
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService,
+              private elementRef: ElementRef) {
   }
 
   ngOnInit() {
@@ -19,5 +20,10 @@ export class ProfileComponent implements OnInit{
         this.user = response;
       }
     })
+  }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+      .body.style.backgroundColor = '#f0f2f5';
   }
 }
