@@ -3,7 +3,6 @@ import {Roles} from "./interfaces/roles";
 import {UserRequestFriends} from "./interfaces/userRequestFriends";
 import {UserRequestOfFriends} from "./interfaces/userRequestOfFriends";
 import {UserFriends} from "./interfaces/userFriends";
-import {UserOfFriends} from "./interfaces/userOfFriends";
 
 export interface UserResponse {
   id: number;
@@ -15,6 +14,5 @@ export interface UserResponse {
   userRequestFriends: UserRequestFriends[];
   userRequestOfFriends: UserRequestOfFriends[];
   userFriends: UserFriends[];
-  userOfFriends: UserOfFriends[];
   roles: Roles[];
 }
