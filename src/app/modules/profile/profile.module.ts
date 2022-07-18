@@ -9,6 +9,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const profileRoutes: Routes = [
   {
@@ -21,17 +22,18 @@ const profileRoutes: Routes = [
   declarations: [
     ProfileComponent,
   ],
-  imports: [
-    RouterModule.forChild(profileRoutes),
-    NavbarModule,
-    MatTabsModule,
-    MatCardModule,
-    CommonModule,
-    MatGridListModule,
-    FontAwesomeModule,
-    MatButtonModule,
-    FlexLayoutModule,
-  ]
+    imports: [
+        RouterModule.forChild(profileRoutes),
+        NavbarModule,
+        MatTabsModule,
+        MatCardModule,
+        CommonModule,
+        MatGridListModule,
+        FontAwesomeModule,
+        MatButtonModule,
+        FlexLayoutModule,
+        MatProgressBarModule,
+    ]
 })
 
 export class ProfileModule

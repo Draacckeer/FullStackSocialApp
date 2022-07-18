@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   faHeart = faHeart;
   faUserMinus = faUserMinus;
   userMe: UserResponseExtends = {} as UserResponseExtends;
+  userServiceLoaded: boolean = false;
   constructor(private usersService: UsersService,
               private elementRef: ElementRef) {
   }
@@ -36,6 +37,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         for(let friend of this.userMe.userFriends) {
           friend.isLiked = !!this.userMe.userLikes.find(like => like.id === friend.id);
         }
+        this.userServiceLoaded = true;
       }
     })
   }
@@ -49,7 +51,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     if (!user.isLiked) {
       this.usersService.likeUserIdByToken(id).subscribe({
         next: () => {
-          document.getElementById("faIcon" + id)!.children[0].classList.add("fa-beat");
+          document.getElementById("faHeartIcon" + id)!.children[0].classList.add("fa-beat");
           user.isLiked = true;
           user.likes++;
         }
@@ -58,7 +60,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     else if(user.isLiked) {
       this.usersService.unlikeUserIdByToken(id).subscribe({
         next: () => {
-          document.getElementById("faIcon" + id)!.children[0].classList.remove("fa-beat");
+          document.getElementById("faHeartIcon" + id)!.children[0].classList.remove("fa-beat");
           user.isLiked = false;
           user.likes--;
         }

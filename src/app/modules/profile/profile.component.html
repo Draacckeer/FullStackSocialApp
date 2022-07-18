@@ -5,6 +5,8 @@
     <div>Email: {{userMe.email}}</div>
   </mat-tab>
   <mat-tab label="Friends">
+    <mat-progress-bar style="margin-top: 10px;" mode="indeterminate" *ngIf="!userServiceLoaded"></mat-progress-bar>
+    <div *ngIf="userServiceLoaded && userMe.userFriends.length==0">No friends yet</div>
     <div class="content">
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let friend of userMe.userFriends">
@@ -19,7 +21,7 @@
             </mat-card-content>
             <mat-card-actions>
               <button mat-button color="accent" (click)="likeUser(friend.id, friend)" style="font-size: 20px;">{{friend.likes}}
-                <fa-icon [class]="friend.isLiked?'':'icon-disabled'" [id]="'faIcon'+friend.id" [icon]="faHeart"
+                <fa-icon [class]="friend.isLiked?'':'icon-disabled'" [id]="'faHeartIcon'+friend.id" [icon]="faHeart"
                          style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1;" ></fa-icon>
               </button>
               <button mat-button (click)="removeFriend(friend.id, friend)" style="font-size: 20px;">
