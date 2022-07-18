@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
   acceptFriendRequest(id: number){
     this.usersService.acceptFriendByToken(id).subscribe({
       next: () => {
-
+        this.user.userRequestOfFriends = this.user.userRequestOfFriends.filter(user => user.id !== id);
       }
     })
   }
@@ -49,6 +49,7 @@ export class NavbarComponent implements OnInit {
   rejectFriendRequest(id: number){
     this.usersService.rejectFriendByToken(id).subscribe({
       next: () => {
+        this.user.userRequestOfFriends = this.user.userRequestOfFriends.filter(user => user.id !== id);
       }
     })
   }

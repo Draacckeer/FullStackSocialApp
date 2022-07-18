@@ -34,16 +34,12 @@ export class MeetComponent implements OnInit {
         this.userMe = response;
         this.usersService.getAllUsers().subscribe({
           next: (response2: UserResponse[]) => {
-            this.usersService.getUserByToken().subscribe({
-              next: (response3: UserResponse) => {
-                response2 = response2.filter(user => user.id !== response3.id);
-                Object.assign(this.users, response2);
-                this.users.forEach(user => {
-                  user.isLiked = !!this.userMe.userLikes.find(like => like.id === user.id);
-                  user.hasRequested = !!this.userMe.userRequestFriends.find(request => request.id === user.id);
-                });
-              }
-            })
+            response2 = response2.filter(user => user.id !== response.id);
+            Object.assign(this.users, response2);
+            this.users.forEach(user => {
+              user.isLiked = !!this.userMe.userLikes.find(like => like.id === user.id);
+              user.hasRequested = !!this.userMe.userRequestFriends.find(request => request.id === user.id);
+            });
           }
         })
       }

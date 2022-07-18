@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <mat-tab-group animationDuration="0ms">
   <mat-tab label="Profile">
-    <div>Username: {{user.username}}</div>
-    <div>Email: {{user.email}}</div>
+    <div>Username: {{userMe.username}}</div>
+    <div>Email: {{userMe.email}}</div>
   </mat-tab>
   <mat-tab label="Friends">
     <div class="content">
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let friend of user.userFriends">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let friend of userMe.userFriends">
           <mat-card class="mat-elevation-z4">
             <mat-card-header>
               <div mat-card-avatar><img style="width: 40px; background-size: cover;" src="/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/></div>
@@ -15,11 +15,16 @@
               <mat-card-subtitle>{{friend.avatar}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-
               <p>{{friend.id}}</p>
-
             </mat-card-content>
             <mat-card-actions>
+              <button mat-button color="accent" (click)="likeUser(friend.id, friend)" style="font-size: 20px;">{{friend.likes}}
+                <fa-icon [class]="friend.isLiked?'':'icon-disabled'" [id]="'faIcon'+friend.id" [icon]="faHeart"
+                         style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1;" ></fa-icon>
+              </button>
+              <button mat-button (click)="removeFriend(friend.id, friend)" style="font-size: 20px;">
+                <fa-icon [icon]="faUserMinus" style="color: darkred"></fa-icon>
+              </button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -30,6 +35,6 @@
 
   </mat-tab>
   <mat-tab label="User Information">
-    <div>User Likes: {{user.likes}}</div>
+    <div>User Likes: {{userMe.likes}}</div>
   </mat-tab>
 </mat-tab-group>
