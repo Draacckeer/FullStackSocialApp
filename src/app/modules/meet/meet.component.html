@@ -12,17 +12,15 @@
           <mat-card-content>
 
             <p>{{user.id}}</p>
-            <div style="height: 20px;">
-              <div *ngIf="user.isLiked" style="color: hotpink">Already Liked</div>
-            </div>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button color="accent" (click)="likeUser(user.id, user)" style="font-size: 20px;">{{user.likes}}
-              <fa-icon [class]="user.isLiked?'':'icon-disabled'" [id]="'faIcon'+user.id" [icon]="faHeart"
+              <fa-icon [class]="user.isLiked?'':'icon-disabled'" [id]="'faHeartIcon'+user.id" [icon]="faHeart"
                        style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1;" ></fa-icon>
             </button>
             <button mat-button color="primary" (click)="requestFriend(user.id, user)" style="font-size: 20px;">
-              <fa-icon [class]="user.hasRequested?'':'icon-disabled'" [icon]="faUserPlus"></fa-icon>
+              <fa-icon [class]="user.hasRequested||user.isFriend?'':'icon-disabled'" [id]="'faUserIcon'+user.id"
+                       [icon]="user.isFriend?faUserGroup:faUserPlus" style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1;"></fa-icon>
             </button>
           </mat-card-actions>
         </mat-card>
