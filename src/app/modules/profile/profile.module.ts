@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatButtonModule} from "@angular/material/button";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 const profileRoutes: Routes = [
   {
@@ -29,6 +30,7 @@ const profileRoutes: Routes = [
     MatGridListModule,
     FontAwesomeModule,
     MatButtonModule,
+    FlexLayoutModule,
   ]
 })
 
