@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
-      .body.style.backgroundColor = '#f0f2f5';
+      .body.style.backgroundColor = '#c0deed';
   }
 
   likeUser(id: number, user: any) {

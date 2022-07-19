@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-messages',
@@ -6,12 +6,18 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ['./messages.component.css']
 })
 
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, AfterViewInit {
 
-  constructor() {
+  constructor(private elementRef: ElementRef) {
 
   }
 
   ngOnInit() {
   }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+      .body.style.backgroundColor = '#c0deed';
+  }
+
 }

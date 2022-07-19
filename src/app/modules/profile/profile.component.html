@@ -10,7 +10,7 @@
     <div class="content">
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let friend of userMe.userFriends">
-          <mat-card class="mat-elevation-z4">
+          <mat-card class="mat-elevation-z4" style="background-color: #1dcaff">
             <mat-card-header>
               <div mat-card-avatar><img style="width: 40px; background-size: cover;" src="/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/></div>
               <mat-card-title>{{friend.username}}</mat-card-title>
@@ -25,7 +25,7 @@
                          style="--fa-animation-duration: 0.5s; --fa-animation-iteration-count: 1;" ></fa-icon>
               </button>
               <button mat-button (click)="removeFriend(friend.id, friend)" style="font-size: 20px;">
-                <fa-icon [icon]="faUserMinus" style="color: darkred"></fa-icon>
+                <fa-icon [icon]="faUserMinus" style="color: #A11212"></fa-icon>
               </button>
             </mat-card-actions>
           </mat-card>

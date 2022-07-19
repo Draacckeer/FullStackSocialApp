@@ -47,7 +47,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   ngAfterViewInit() {
 
     this.elementRef.nativeElement.ownerDocument
-      .body.style.backgroundColor = '#f0f2f5';
+      .body.style.backgroundColor = '#c0deed';
     document.getElementById("publicationContentAddTextarea")!
       .addEventListener("keyup", (e) => {
         e.preventDefault();

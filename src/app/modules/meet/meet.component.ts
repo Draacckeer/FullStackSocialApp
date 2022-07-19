@@ -96,7 +96,7 @@ export class MeetComponent implements OnInit {
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
-      .body.style.backgroundColor = '#f0f2f5';
+      .body.style.backgroundColor = '#c0deed';
   }
 
 }

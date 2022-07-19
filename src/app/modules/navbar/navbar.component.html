@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" style="position: sticky; top:0; z-index: 1000;">
+<mat-toolbar style="position: sticky; top:0; z-index: 1000; background: #0084b4">
   <div style="display: flex; background-color: white; border-radius: 50%; padding: 7px; width: 40px; height: 40px;">
     <img *ngIf="user.avatar" style="width: 40px;" src="/assets/img/{{user.avatar}}.png" alt="{{user.avatar}}"/>
   </div>
@@ -6,36 +6,90 @@
   <span style="margin-left: 10px;">{{user.username}}</span>
   <div style="flex: 1 1 auto"></div>
   <!-- App Options -->
-  <button mat-button style="font-size: 20px;" [routerLink]="'/meet'">
-    <fa-icon [icon]="faUsers"></fa-icon>
-  </button>
-  <button mat-button style="font-size: 20px;" [routerLink]="'/messages'">
-    <fa-icon [icon]="faMessage"></fa-icon>
-  </button>
-  <button mat-button style="font-size: 20px;" [routerLink]="'/publications'">
-    <fa-icon [icon]="faHouse"></fa-icon>
-  </button>
-  <button mat-button style="font-size: 18px;" [routerLink]="'/profile'">
-    <fa-icon [icon]="faUser"></fa-icon>
-  </button>
-  <button mat-button [matMenuTriggerFor]="notificationMenu" style="font-size: 20px;">
-    <fa-icon [icon]="faBell"></fa-icon>
-  </button>
-  <mat-menu #notificationMenu="matMenu">
-    <button style="height: 150px; width: 300px;" mat-menu-item *ngFor="let friendRequest of user.userRequestOfFriends">
-      <div style="flex-direction: column">
-        <div>
-          <img style="width: 40px;" src="/assets/img/{{friendRequest.avatar}}.png" alt="{{friendRequest.avatar}}"/>
-          <span style="margin-left: 10px;">{{friendRequest.username}}</span>
-        </div>
-        <div>
-          <button mat-button (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
-          <button mat-button (click)="rejectFriendRequest(friendRequest.id)">Decline</button>
-        </div>
-      </div>
+  <div *ngIf="!isScreenSmall">
+    <button mat-button [routerLink]="'/meet'">
+      <fa-icon class="fa-icon-navbar fa-icon-users" [icon]="faUsers"></fa-icon>
     </button>
-  </mat-menu>
-  <button mat-button style="font-size: 20px;" (click)="logout()">
-    <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
-  </button>
+    <button mat-button [routerLink]="'/messages'">
+      <fa-icon class="fa-icon-navbar fa-icon-message" [icon]="faMessage"></fa-icon>
+    </button>
+    <button mat-button [routerLink]="'/publications'">
+      <fa-icon class="fa-icon-navbar fa-icon-house" [icon]="faHouse"></fa-icon>
+    </button>
+    <button mat-button [routerLink]="'/profile'">
+      <fa-icon class="fa-icon-navbar fa-icon-user" [icon]="faUser"></fa-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="notificationMenu">
+      <fa-icon class="fa-icon-navbar fa-icon-bell" [icon]="faBell"></fa-icon>
+    </button>
+    <mat-menu #notificationMenu="matMenu">
+      <button mat-menu-item *ngIf="initialDataLoaded && (user.userRequestOfFriends.length==0)">
+        <div>No notifications</div>
+      </button>
+      <button style="height: 150px; width: 300px;" mat-menu-item *ngFor="let friendRequest of user.userRequestOfFriends">
+        <div style="flex-direction: column">
+          <div>
+            <img style="width: 40px;" src="/assets/img/{{friendRequest.avatar}}.png" alt="{{friendRequest.avatar}}"/>
+            <span style="margin-left: 10px;">{{friendRequest.username}}</span>
+          </div>
+          <div>
+            <button mat-button (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
+            <button mat-button (click)="rejectFriendRequest(friendRequest.id)">Decline</button>
+          </div>
+        </div>
+      </button>
+    </mat-menu>
+    <button mat-button (click)="logout()">
+      <fa-icon class="fa-icon-navbar fa-icon-logout" [icon]="faArrowRightFromBracket"></fa-icon>
+    </button>
+  </div>
+  <!-- App Options -->
+  <div *ngIf="isScreenSmall">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <fa-icon class="fa-icon-navbar fa-icon-menu" [icon]="faBars"></fa-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="'/meet'">
+        <fa-icon class="fa-icon-navbar-menu fa-icon-users" [icon]="faUsers"></fa-icon>
+        <span>Meet</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/messages'">
+        <fa-icon class="fa-icon-navbar-menu fa-icon-message" [icon]="faMessage"></fa-icon>
+        <span>Messages</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/publications'">
+        <fa-icon class="fa-icon-navbar-menu fa-icon-house" [icon]="faHouse"></fa-icon>
+        <span>Publications</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/profile'">
+        <fa-icon class="fa-icon-navbar-menu fa-icon-user" [icon]="faUser"></fa-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="notificationMenu">
+        <fa-icon class="fa-icon-navbar-menu fa-icon-bell" [icon]="faBell"></fa-icon>
+        <span>Notifications</span>
+      </button>
+      <mat-menu #notificationMenu="matMenu">
+        <button mat-menu-item *ngIf="initialDataLoaded && (user.userRequestOfFriends.length==0)">
+          <div>No notifications</div>
+        </button>
+        <button style="height: 150px; width: 300px;" mat-menu-item *ngFor="let friendRequest of user.userRequestOfFriends">
+          <div style="flex-direction: column">
+            <div>
+              <img style="width: 40px;" src="/assets/img/{{friendRequest.avatar}}.png" alt="{{friendRequest.avatar}}"/>
+              <span style="margin-left: 10px;">{{friendRequest.username}}</span>
+            </div>
+            <div>
+              <button mat-button (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
+              <button mat-button (click)="rejectFriendRequest(friendRequest.id)">Decline</button>
+            </div>
+          </div>
+        </button>
+      </mat-menu>
+      <button mat-menu-item (click)="logout()">
+        <fa-icon class="fa-icon-navbar-menu fa-icon-logout" [icon]="faArrowRightFromBracket"></fa-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
