@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
-<button (click)="test()">aa</button>
-<mat-card style="width: 450px; height: 450px; margin: 0 auto;">
+<mat-card style="width: 450px; height: 450px; margin: 30px auto 0;">
   <div style="display: flex;">
     <div style="width: 150px;">
       <div style="flex-direction: row; display: flex; width: 150px;" *ngFor="let friend of userMe.userFriends">
@@ -24,18 +23,18 @@
           </div>
         </mat-list-item>
       </mat-list>
-      <div *ngIf="userSelected==-1">Select a user first</div>
+      <div *ngIf="userSelected==-1" style="margin-left: 10px;">Select a user first</div>
       <div *ngIf="userSelected!=-1" class="line"></div>
       <!-- Add Comment -->
-      <div *ngIf="userSelected!=-1">
+      <div [style]="userSelected==-1?'display: none':''">
         <div style="display: flex; flex-direction: row;">
           <div class="form" style="flex-grow: 1;">
             <div style="padding: 8px 12px;">
-              <textarea class="comment-textarea" cdkTextareaAutosize placeholder="Write a message..."
+              <textarea class="comment-textarea" id="input" cdkTextareaAutosize placeholder="Write a message..."
                         [(ngModel)]="message"></textarea>
             </div>
           </div>
-          <button mat-button color="primary"
+          <button mat-button color="primary" id="button"
                   (click)="sendMessage()">Send</button>
         </div>
       </div>

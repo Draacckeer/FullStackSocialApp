@@ -38,10 +38,19 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#c0deed';
-  }
 
-  test(){
-    console.log(this.messages);
+    document.getElementById("input")!
+      .addEventListener("keyup", (e) => {
+        e.preventDefault();
+        if (e.key == "Enter" && !e.shiftKey) {
+          document.getElementById("button")!.click();
+        }
+      });
+    document.getElementById("input")!.addEventListener("keydown", (e)=>{
+      if(e.key == "Enter" && !e.shiftKey){
+        e.preventDefault();
+      }
+    });
   }
 
   selectUser(id: number){
