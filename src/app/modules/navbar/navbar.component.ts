@@ -29,14 +29,16 @@ export class NavbarComponent implements OnInit {
   faBars = faBars;
   user: UserResponse = {} as UserResponse;
   userRequests: UserResponse[] = [] as UserResponse[];
+  routeString: string = '';
 
-  constructor(private route: Router , private usersService: UsersService,
+  constructor(private router: Router , private usersService: UsersService,
               private breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([
       '(max-width: 576px)'
     ]).subscribe(result => {
       this.isScreenSmall = result.matches;
     });
+    this.routeString = this.router.url;
   }
 
   ngOnInit() {
@@ -71,6 +73,6 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('token');
-    this.route.navigate(['/']);
+    this.router.navigate(['/']);
   }
 }
