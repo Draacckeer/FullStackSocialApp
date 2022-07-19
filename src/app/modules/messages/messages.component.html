@@ -1,2 +1,14 @@
 <app-navbar></app-navbar>
-<div>Messages works!</div>
+<button (click)="test()">aa</button>
+<mat-card style="width: 450px; height: 450px; margin: 0 auto;">
+  <div style="display: flex;">
+    <div>
+      <div style="flex-direction: row; display: flex; width: 150px;" *ngFor="let friend of userMe.userFriends">
+        <button mat-button (click)="selectUser(friend.id)" style="width: 150px;">{{friend.username}}</button>
+      </div>
+    </div>
+    <div *ngFor="let message of messages">
+      <div>{{message.content}}</div>
+    </div>
+  </div>
+</mat-card>

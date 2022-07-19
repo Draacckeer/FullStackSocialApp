@@ -32,7 +32,6 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.retrievePublications();
-    let date = "2022-07-16 02:16:34.38";
     // July 16, at 2:16:34 AM
     this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
     this.socket.on('addNewPublicationComment', (data: PublicationComment)=>{
