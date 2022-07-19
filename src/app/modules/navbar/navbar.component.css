@@ -7,31 +7,39 @@
   margin-right: 10px;
 }
 
+.fa-icon-unselected{
+  color: white;
+}
+
+.fa-icon-selected{
+  color: #1dcaff;
+}
+
 .fa-icon-users{
-  color: #0A30C2;
+  color: white;
 }
 
 .fa-icon-message{
-  color: #0A30C2;
+  color: white;
 }
 
 .fa-icon-house{
-  color: #0A30C2;
+  color: white;
 }
 
 .fa-icon-user{
-  color: #0A30C2;
+  color: white;
 }
 
 .fa-icon-bell{
-  color: #0A30C2;
+  color: white;
 }
 
 .fa-icon-logout {
-  color: #0A30C2;
+  color: white;
 }
 
 .fa-icon-menu{
-  color: #0A30C2;
+  color: white;
 }
 

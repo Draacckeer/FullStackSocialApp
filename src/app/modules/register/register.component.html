@@ -13,7 +13,7 @@
             Username must be at least <strong>6</strong> characters long
           </mat-error>
           <mat-error *ngIf="userFormGroup.get('username')?.hasError('maxlength')">
-            Username must be at most <strong>20</strong> characters long
+            Username must be at most <strong>50</strong> characters long
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -31,7 +31,7 @@
             Email is <strong>invalid</strong>
           </mat-error>
           <mat-error *ngIf="userFormGroup.get('email')?.hasError('maxlength')">
-            Email must be at most <strong>20</strong> characters long
+            Email must be at most <strong>50</strong> characters long
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -44,7 +44,7 @@
             Password must be at least <strong>6</strong> characters long
           </mat-error>
           <mat-error *ngIf="userFormGroup.get('password')?.hasError('maxlength')">
-            Password must be at most <strong>20</strong> characters long
+            Password must be at most <strong>50</strong> characters long
           </mat-error>
         </mat-form-field>
       </form>

@@ -1,4 +1,4 @@
-<mat-toolbar style="position: sticky; top:0; z-index: 1000; background: #0084b4">
+<mat-toolbar style="position: sticky; top:0; z-index: 1000; background: #2596be">
   <div style="display: flex; background-color: white; border-radius: 50%; padding: 7px; width: 40px; height: 40px;">
     <img *ngIf="user.avatar" style="width: 40px;" src="/assets/img/{{user.avatar}}.png" alt="{{user.avatar}}"/>
   </div>
@@ -8,19 +8,19 @@
   <!-- App Options -->
   <div *ngIf="!isScreenSmall">
     <button mat-button [routerLink]="'/meet'">
-      <fa-icon class="fa-icon-navbar fa-icon-users" [icon]="faUsers"></fa-icon>
+      <fa-icon class="fa-icon-navbar fa-icon-unselected" [icon]="faUsers"></fa-icon>
     </button>
     <button mat-button [routerLink]="'/messages'">
-      <fa-icon class="fa-icon-navbar fa-icon-message" [icon]="faMessage"></fa-icon>
+      <fa-icon class="fa-icon-navbar fa-icon-unselected" [icon]="faMessage"></fa-icon>
     </button>
     <button mat-button [routerLink]="'/publications'">
-      <fa-icon class="fa-icon-navbar fa-icon-house" [icon]="faHouse"></fa-icon>
+      <fa-icon class="fa-icon-navbar fa-icon-unselected" [icon]="faHouse"></fa-icon>
     </button>
     <button mat-button [routerLink]="'/profile'">
-      <fa-icon class="fa-icon-navbar fa-icon-user" [icon]="faUser"></fa-icon>
+      <fa-icon class="fa-icon-navbar fa-icon-unselected" [icon]="faUser"></fa-icon>
     </button>
     <button mat-button [matMenuTriggerFor]="notificationMenu">
-      <fa-icon class="fa-icon-navbar fa-icon-bell" [icon]="faBell"></fa-icon>
+      <fa-icon class="fa-icon-navbar fa-icon-unselected" [icon]="faBell"></fa-icon>
     </button>
     <mat-menu #notificationMenu="matMenu">
       <button mat-menu-item *ngIf="initialDataLoaded && (user.userRequestOfFriends.length==0)">

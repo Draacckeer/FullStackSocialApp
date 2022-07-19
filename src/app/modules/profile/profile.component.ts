@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
-      .body.style.backgroundColor = '#c0deed';
+      .body.style.backgroundColor = '#e0ecf4';
   }
 
   likeUser(id: number, user: any) {
@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       this.usersService.likeUserIdByToken(id).subscribe({
         next: () => {
           document.getElementById("faHeartIcon" + id)!.children[0].classList.add("fa-beat");
+          document.getElementById("faHeartIcon" + id)!.children[0].classList.remove("fa-bounce");
           user.isLiked = true;
           user.likes++;
         }
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       this.usersService.unlikeUserIdByToken(id).subscribe({
         next: () => {
           document.getElementById("faHeartIcon" + id)!.children[0].classList.remove("fa-beat");
+          document.getElementById("faHeartIcon" + id)!.children[0].classList.add("fa-bounce");
           user.isLiked = false;
           user.likes--;
         }
