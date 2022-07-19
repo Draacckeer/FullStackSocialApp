@@ -5,6 +5,7 @@ import {NavbarModule} from "../navbar/navbar.module";
 import {MatCardModule} from "@angular/material/card";
 import {CommonModule} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
+import {MatListModule} from "@angular/material/list";
 
 const messagesRoutes: Routes = [
   {
@@ -23,6 +24,7 @@ const messagesRoutes: Routes = [
     MatCardModule,
     CommonModule,
     MatButtonModule,
+    MatListModule,
   ]
 })
 

@@ -1,0 +1,39 @@
+.comment-me{
+  display: inline-block;
+  padding: 10px;
+  background-color: #1dcaff;
+  align-self: flex-start;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+.comment-him{
+  display: inline-block;
+  padding: 10px;
+  background-color: #f0f2f5;
+  align-self: flex-start;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+.message-left{
+  flex-direction: column;
+  width: 300px;
+}
+
+.message-right{
+  flex-direction: column;
+  width: 300px;
+  text-align: right;
+}
+
+.publication-created-at{
+  font-size: 12px;
+  color: #888888;
+}

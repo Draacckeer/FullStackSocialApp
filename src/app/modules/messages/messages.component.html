@@ -7,8 +7,20 @@
         <button mat-button (click)="selectUser(friend.id)" style="width: 150px;">{{friend.username}}</button>
       </div>
     </div>
-    <div *ngFor="let message of messages">
-      <div>{{message.content}}</div>
-    </div>
+    <mat-list style="padding-bottom: 15px; height: 300px; overflow-y: auto; overflow-x: hidden">
+      <div mat-subheader>Messages</div>
+      <mat-list-item style="flex-direction: row; width: 300px; margin-top: 5px; height: auto;"
+                     *ngFor="let message of messages">
+        <div [class]="message.userSenderid == userMe.id?'message-right':'message-left'">
+          <div [class]="message.userSenderid == userMe.id?'comment-me':'comment-him'">
+            <div>{{message.content}}</div>
+          </div>
+          <div style="flex-direction: row;">
+            <div class="publication-created-at" style="margin-right: 10px; margin-left: 10px; display: inline-block"><strong>Like</strong></div>
+            <div class="publication-created-at" style="display: inline-block">{{message.createdAt}}</div>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
   </div>
 </mat-card>
