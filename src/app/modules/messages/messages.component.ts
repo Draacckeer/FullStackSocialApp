@@ -3,6 +3,7 @@ import {Message} from "../../models/message";
 import {UserResponse} from "../../models/userResponse";
 import {UsersService} from "../../services/users.service";
 import {MessagesService} from "../../services/messages.service";
+import io from "socket.io-client";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {MessagesService} from "../../services/messages.service";
 })
 
 export class MessagesComponent implements OnInit, AfterViewInit {
+  socket: any;
   userSelected: number = -1;
   userMe: UserResponse = {} as UserResponse;
   messages: Message[] = [] as Message[];
@@ -25,6 +27,12 @@ export class MessagesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.retrieveData();
+    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket.on('addNewMessage', (data: any)=>{
+      if(this.userSelected !=-1 && (data.userSenderid == this.userMe.id || data.userReceiverid == this.userMe.id)){
+        this.selectUser(this.userSelected);
+      }
+    });
   }
 
   retrieveData(){
@@ -75,8 +83,13 @@ export class MessagesComponent implements OnInit, AfterViewInit {
     this.messageCreate.userReceiverid = this.userSelected;
     this.messageCreate.content = this.message;
     this.messagesService.create(this.messageCreate).subscribe({
-      next: () => {
+      next: (response: Message) => {
         this.message = "";
+        this.messages.push(response);
+        this.socket.emit('addNewMessage', {
+          userSenderid: this.userMe.id,
+          userReceiverid: this.userSelected,
+        });
       }
     });
 
