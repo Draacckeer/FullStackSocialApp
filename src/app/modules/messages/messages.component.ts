@@ -12,9 +12,10 @@ import {MessagesService} from "../../services/messages.service";
 })
 
 export class MessagesComponent implements OnInit, AfterViewInit {
-  userSelected: number = 0;
+  userSelected: number = -1;
   userMe: UserResponse = {} as UserResponse;
   messages: Message[] = [] as Message[];
+  message: string = "";
 
   constructor(private elementRef: ElementRef,
               private usersService: UsersService,

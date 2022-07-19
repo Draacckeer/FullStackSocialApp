@@ -6,6 +6,8 @@ import {MatCardModule} from "@angular/material/card";
 import {CommonModule} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
+import {TextFieldModule} from "@angular/cdk/text-field";
+import {FormsModule} from "@angular/forms";
 
 const messagesRoutes: Routes = [
   {
@@ -25,6 +27,8 @@ const messagesRoutes: Routes = [
     CommonModule,
     MatButtonModule,
     MatListModule,
+    TextFieldModule,
+    FormsModule,
   ]
 })
 
