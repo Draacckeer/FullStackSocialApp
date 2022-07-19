@@ -16,6 +16,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
   userMe: UserResponse = {} as UserResponse;
   messages: Message[] = [] as Message[];
   message: string = "";
+  messageCreate: Message = {} as Message;
 
   constructor(private elementRef: ElementRef,
               private usersService: UsersService,
@@ -52,6 +53,24 @@ export class MessagesComponent implements OnInit, AfterViewInit {
         }));
       }
     });
+  }
+
+  sendMessage(){
+    if(this.message.length <= 0){
+      return;
+    }
+    if(this.userSelected === -1){
+      return;
+    }
+    this.messageCreate.userSenderid = this.userMe.id;
+    this.messageCreate.userReceiverid = this.userSelected;
+    this.messageCreate.content = this.message;
+    this.messagesService.create(this.messageCreate).subscribe({
+      next: () => {
+        this.message = "";
+      }
+    });
+
   }
 
 }
