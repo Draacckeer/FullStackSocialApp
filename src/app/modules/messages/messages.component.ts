@@ -13,6 +13,7 @@ import io from "socket.io-client";
 })
 
 export class MessagesComponent implements OnInit, AfterViewInit {
+  usersLoaded: boolean = false;
   socket: any;
   userSelected: number = -1;
   userMe: UserResponse = {} as UserResponse;
@@ -39,6 +40,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
     this.usersService.getUserByToken().subscribe({
       next: (userMe: UserResponse) => {
         this.userMe = userMe;
+        this.usersLoaded = true;
       }
     });
   }

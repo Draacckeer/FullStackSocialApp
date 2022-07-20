@@ -20,6 +20,7 @@ interface UserResponseExtends extends UserResponse {
 })
 
 export class MeetComponent implements OnInit {
+  usersLoaded: boolean = false;
   socket: any;
   faHeart = faHeart;
   faUserPlus = faUserPlus;
@@ -49,6 +50,7 @@ export class MeetComponent implements OnInit {
               user.hasRequested = !!this.userMe.userRequestFriends.find(request => request.id === user.id);
               user.isFriend = !!this.userMe.userFriends.find(friend => friend.id === user.id);
             });
+            this.usersLoaded = true;
           }
         })
       }

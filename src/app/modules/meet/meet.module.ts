@@ -8,6 +8,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {FlexModule} from "@angular/flex-layout";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const meetRoutes: Routes = [
   {
@@ -20,16 +21,17 @@ const meetRoutes: Routes = [
   declarations: [
     MeetComponent,
   ],
-  imports: [
-    RouterModule.forChild(meetRoutes),
-    NavbarModule,
-    MatGridListModule,
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    FontAwesomeModule,
-    FlexModule,
-  ]
+    imports: [
+        RouterModule.forChild(meetRoutes),
+        NavbarModule,
+        MatGridListModule,
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        FontAwesomeModule,
+        FlexModule,
+        MatProgressBarModule,
+    ]
 })
 
 export class MeetModule

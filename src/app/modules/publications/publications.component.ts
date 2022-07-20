@@ -14,6 +14,7 @@ import {formatDate} from "@angular/common";
 })
 
 export class PublicationsComponent implements OnInit, AfterViewInit{
+  publicationsLoaded: boolean = false;
   publicationCreate: Publication = {} as Publication;
   socket: any;
   publicationCommentCreate: PublicationComment = {} as PublicationComment;
@@ -89,6 +90,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
             for(let publicationComment of this.publicationCommentsData){
               publicationComment.createdAt = formatDate(publicationComment.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
             }
+            this.publicationsLoaded = true;
           }
         });
       }

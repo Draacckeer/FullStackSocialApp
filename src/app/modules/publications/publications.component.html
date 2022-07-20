@@ -3,6 +3,7 @@
 <!--
 <div style="background-color: #f0f2f5; height: 100%; position: fixed; overflow: auto; z-index: 1; right: 0; width: 250px;">
 </div> -->
+<mat-progress-bar mode="indeterminate" *ngIf="!publicationsLoaded"></mat-progress-bar>
 <div style="margin: 0 auto; width: calc(min(450px,90%));">
   <mat-card style="width: calc(min(420px, calc(100% - 30px))); margin-top: 30px;">
     <textarea class="comment-textarea" id="publicationContentAddTextarea" cdkTextareaAutosize placeholder="Add a new publication here..."

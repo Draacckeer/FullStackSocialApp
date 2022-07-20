@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {TextFieldModule} from "@angular/cdk/text-field";
 import {FormsModule} from "@angular/forms";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const messagesRoutes: Routes = [
   {
@@ -20,16 +21,17 @@ const messagesRoutes: Routes = [
   declarations: [
     MessagesComponent,
   ],
-  imports: [
-    RouterModule.forChild(messagesRoutes),
-    NavbarModule,
-    MatCardModule,
-    CommonModule,
-    MatButtonModule,
-    MatListModule,
-    TextFieldModule,
-    FormsModule,
-  ]
+    imports: [
+        RouterModule.forChild(messagesRoutes),
+        NavbarModule,
+        MatCardModule,
+        CommonModule,
+        MatButtonModule,
+        MatListModule,
+        TextFieldModule,
+        FormsModule,
+        MatProgressBarModule,
+    ]
 })
 
 export class MessagesModule
