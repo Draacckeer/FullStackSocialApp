@@ -1,11 +1,21 @@
 <app-navbar></app-navbar>
+<mat-progress-bar style="margin-top: 10px;" mode="indeterminate" *ngIf="!userServiceLoaded"></mat-progress-bar>
 <mat-tab-group animationDuration="0ms">
+  <!--Profile-->
   <mat-tab label="Profile">
-    <div>Username: {{userMe.username}}</div>
-    <div>Email: {{userMe.email}}</div>
+    <mat-card style="max-width: 300px; margin: 30px auto 0; background-color: #98ccdc">
+      <mat-card-header>
+        <img style="width: 40px;" mat-card-avatar src="/assets/img/{{userMe.avatar}}.png" alt="{{userMe.avatar}}"/>
+        <mat-card-title>{{userMe.username}}</mat-card-title>
+        <mat-card-subtitle>{{userMe.avatar}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{userMe.email}}</p>
+      </mat-card-content>
+    </mat-card>
   </mat-tab>
+  <!--Friends-->
   <mat-tab label="Friends">
-    <mat-progress-bar style="margin-top: 10px;" mode="indeterminate" *ngIf="!userServiceLoaded"></mat-progress-bar>
     <div *ngIf="userServiceLoaded && userMe.userFriends.length==0">No friends yet</div>
     <div class="content">
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
@@ -32,10 +42,8 @@
         </div>
       </div>
     </div>
-
-
-
   </mat-tab>
+  <!--User Information-->
   <mat-tab label="User Information">
     <div>User Likes: {{userMe.likes}}</div>
   </mat-tab>
