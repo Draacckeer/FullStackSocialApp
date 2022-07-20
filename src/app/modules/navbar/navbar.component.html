@@ -20,7 +20,8 @@
       <fa-icon class="fa-icon-navbar" [icon]="faUser" [class]="routeString=='/profile'?'fa-icon-selected':'fa-icon-unselected'"></fa-icon>
     </button>
     <button mat-button [matMenuTriggerFor]="notificationMenu">
-      <fa-icon class="fa-icon-navbar fa-icon-unselected" [icon]="faBell"></fa-icon>
+      <fa-icon id="fa-icon-bell-id" class="fa-icon-navbar fa-icon-unselected" [icon]="faBell"></fa-icon>
+      <span *ngIf="userNotifications!=-1" [matBadge]="userNotifications" style="display: inline-block;"></span>
     </button>
     <mat-menu #notificationMenu="matMenu">
       <button mat-menu-item *ngIf="initialDataLoaded && (user.userRequestOfFriends.length==0)">

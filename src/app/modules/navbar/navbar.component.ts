@@ -18,6 +18,7 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 })
 
 export class NavbarComponent implements OnInit {
+  userNotifications: number = -1;
   initialDataLoaded: boolean = false;
   isScreenSmall: boolean = false;
   faArrowRightFromBracket = faArrowRightFromBracket;
@@ -51,6 +52,7 @@ export class NavbarComponent implements OnInit {
       next: (response: UserResponse) => {
         this.user = response;
         this.initialDataLoaded = true;
+        this.userNotifications = this.user.userRequestOfFriends.length;
       }
     })
   }
@@ -59,6 +61,7 @@ export class NavbarComponent implements OnInit {
     this.usersService.acceptFriendByToken(id).subscribe({
       next: () => {
         this.user.userRequestOfFriends = this.user.userRequestOfFriends.filter(user => user.id !== id);
+        this.userNotifications = this.user.userRequestOfFriends.length;
       }
     })
   }
@@ -67,6 +70,7 @@ export class NavbarComponent implements OnInit {
     this.usersService.rejectFriendByToken(id).subscribe({
       next: () => {
         this.user.userRequestOfFriends = this.user.userRequestOfFriends.filter(user => user.id !== id);
+        this.userNotifications = this.user.userRequestOfFriends.length;
       }
     })
   }

@@ -115,16 +115,18 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   }
 
   addNewComment(index: number, publicationId: number){
-    if(this.comment[index] == undefined || this.comment[index].replace(/\s/g,"") == ""){
+    let actualComment = this.comment[index];
+    if(actualComment == undefined || actualComment.replace(/\s/g,"") == ""){
       return;
     }
+    this.comment[index] = "";
     this.usersService.getUserPublicationByToken().subscribe({
       next: (response: any)=>{
         this.publicationCommentCreate.userid = response.id;
         this.publicationCommentCreate.username = response.username;
         this.publicationCommentCreate.userAvatar = response.avatar;
         this.publicationCommentCreate.publication = publicationId;
-        this.publicationCommentCreate.comment = this.comment[index];
+        this.publicationCommentCreate.comment = actualComment;
         this.publicationCommentCreate.line = 0;
         this.publicationCommentCreate.level = 0;
         this.publicationCommentCreate.level1 = 0;
@@ -134,7 +136,6 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
             next: (response2: any)=>{
               this.publicationCommentsArranged[index].push(response2);
               this.publicationCommentCreate = {} as PublicationComment;
-              this.comment[index] = "";
               this.socket.emit('addNewPublicationComment', response2);
             }
         });
