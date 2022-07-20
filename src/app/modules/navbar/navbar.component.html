@@ -23,7 +23,7 @@
       <fa-icon id="fa-icon-bell-id" class="fa-icon-navbar fa-icon-unselected" [icon]="faBell"></fa-icon>
       <span *ngIf="userNotifications!=-1" [matBadge]="userNotifications" style="display: inline-block;"></span>
     </button>
-    <mat-menu #notificationMenu="matMenu">
+    <mat-menu class="custom-menu" #notificationMenu="matMenu">
       <button mat-menu-item *ngIf="initialDataLoaded && (user.userRequestOfFriends.length==0)">
         <div>No notifications</div>
       </button>
@@ -34,8 +34,8 @@
             <span style="margin-left: 10px;">{{friendRequest.username}}</span>
           </div>
           <div>
-            <button mat-button (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
-            <button mat-button (click)="rejectFriendRequest(friendRequest.id)">Decline</button>
+            <button mat-button color="primary" (click)="acceptFriendRequest(friendRequest.id)">Accept</button>
+            <button mat-button color="warn" (click)="rejectFriendRequest(friendRequest.id)">Decline</button>
           </div>
         </div>
       </button>
