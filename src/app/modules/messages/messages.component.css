@@ -73,6 +73,14 @@
   overflow-x: hidden;
 }
 
+.friend-selected{
+  background-color: #2596be;
+}
+
+.friend-not-selected{
+
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
