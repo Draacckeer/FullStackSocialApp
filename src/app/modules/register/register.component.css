@@ -17,6 +17,20 @@
 }
 
 .mat-form-field{
-  width: 350px;
+  width: 90%;
   margin-top: 5px;
+}
+
+.avatar-image{
+  width: 60px;
+  margin-right: 20px;
+}
+
+@media (max-width: 480px){
+  .container-register{
+    width: 100%;
+  }
+  .container-register-card{
+    width: 83%;
+  }
 }
