@@ -10,10 +10,10 @@
             Username is <strong>required</strong>
           </mat-error>
           <mat-error *ngIf="userFormGroup.get('username')?.hasError('minlength')">
-            Username must be at least <strong>6</strong> characters long
+            Username must be at least <strong>2</strong> characters long
           </mat-error>
           <mat-error *ngIf="userFormGroup.get('username')?.hasError('maxlength')">
-            Username must be at most <strong>50</strong> characters long
+            Username must be at most <strong>10</strong> characters long
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">

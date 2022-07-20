@@ -41,7 +41,7 @@
 .line{
   border-bottom: 1px solid darkgray;
   margin: 0 auto;
-  width: 300px;
+  width: 100%;
 }
 
 .comment-textarea{
@@ -57,6 +57,19 @@
   width: calc(100%);
   display: inline-block;
   overflow-y: hidden
+}
+
+.card-messages{
+  width: min(450px, calc(100% - 52px));
+  height: 450px;
+  margin: 30px auto 0;
+}
+
+.messages{
+  padding-bottom: 15px;
+  height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* width */

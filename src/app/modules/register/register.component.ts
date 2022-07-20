@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 export class RegisterComponent{
   userAvatar: string = "ghost";
   userFormGroup = new FormGroup({
-    username: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
+    username: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
     password: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
     email: new FormControl('',[Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(50)]),
   });
