@@ -15,32 +15,8 @@
   color: #1dcaff;
 }
 
-.fa-icon-users{
-  color: white;
-}
-
-.fa-icon-message{
-  color: white;
-}
-
-.fa-icon-house{
-  color: white;
-}
-
-.fa-icon-user{
-  color: white;
-}
-
-.fa-icon-bell{
-  color: white;
-}
-
-.fa-icon-logout {
-  color: white;
-}
-
-.fa-icon-menu{
-  color: white;
+.fa-icon-menu-unselected{
+  color: #7596be;
 }
 
 .mat-badge-medium.mat-badge-above .mat-badge-content {
