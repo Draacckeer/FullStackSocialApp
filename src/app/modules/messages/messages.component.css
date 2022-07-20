@@ -61,6 +61,7 @@
 
 .card-messages{
   width: min(450px, calc(100% - 52px));
+  min-width: 200px;
   height: 450px;
   margin: 30px auto 0;
 }

@@ -1,9 +1,8 @@
 <app-navbar></app-navbar>
-<mat-card class="card-messages">
+<mat-card class="card-messages" style="background-color: #98ccdc">
   <div style="display: flex;">
     <div style="width: 150px;">
       <div style="width: 150px;" *ngFor="let friend of userMe.userFriends">
-
         <button mat-button (click)="selectUser(friend.id)" style="width: 150px; flex-direction: row">
           <img style="width: 40px;" src="/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/>
           <div style="display: inline-block; width: 100px;">
@@ -12,10 +11,11 @@
         </button>
       </div>
     </div>
+    <mat-divider vertical style="height: 450px;"></mat-divider>
     <div style="width: min(350px, calc(100% - 150px));">
       <mat-list class="messages" *ngIf="userSelected!=-1">
         <div mat-subheader>Messages</div>
-        <div *ngIf="messages.length==0" style="margin-left: 10px;">Send the first message!</div>
+        <div *ngIf="messages.length==0" style="margin-left: 10px; color: #0000008a;">Send the first message!</div>
         <mat-list-item style="flex-direction: row; width: 100%; margin-top: 5px; height: auto;"
                        *ngFor="let message of messages">
           <div [class]="message.userSenderid == userMe.id?'message-right':'message-left'">
@@ -29,8 +29,8 @@
           </div>
         </mat-list-item>
       </mat-list>
-      <div *ngIf="userSelected==-1" style="margin-left: 10px;">Select a user first</div>
-      <div *ngIf="userSelected!=-1" class="line"></div>
+      <div *ngIf="userSelected==-1" style="margin-left: 10px; color: #0000008a">Select a user first</div>
+      <div *ngIf="userSelected!=-1"><mat-divider></mat-divider></div>
       <!-- Add Comment -->
       <div [style]="userSelected==-1?'display: none':''">
         <div style="display: flex; flex-direction: row;">
