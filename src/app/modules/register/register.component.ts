@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 })
 
 export class RegisterComponent implements AfterViewInit{
+  isLoading: boolean = false;
   userAvatar: string = "ghost";
   userFormGroup = new FormGroup({
     username: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
@@ -29,6 +30,7 @@ export class RegisterComponent implements AfterViewInit{
 
   register(){
     if(this.userFormGroup.valid) {
+      this.isLoading = true;
       let role: string[] = ["ROLE_USER"];
       this.usersService.registerUser({
         username: this.userFormGroup.get('username')?.value,
@@ -46,14 +48,17 @@ export class RegisterComponent implements AfterViewInit{
                 localStorage.setItem('token',response.token);
                 this.toastr.success('You have successfully registered', 'Success');
                 this.route.navigate(['/publications']);
+                this.isLoading = false;
               },
               error: () => {
                 this.toastr.error('Something went wrong', 'Error');
+                this.isLoading = false;
               }
           })
         },
         error: () => {
-          this.toastr.error('Error while registering', 'Error');
+          this.toastr.error('The Username or Email is already taken', 'Error');
+          this.isLoading = false;
         }
       });
     }

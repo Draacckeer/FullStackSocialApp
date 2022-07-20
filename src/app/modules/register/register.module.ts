@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {MatRadioModule} from "@angular/material/radio";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const registerRoutes: Route[] = [
   {
@@ -32,6 +33,7 @@ const registerRoutes: Route[] = [
         MatRadioModule,
         FontAwesomeModule,
         FormsModule,
+        MatProgressBarModule,
     ]
 })
 
