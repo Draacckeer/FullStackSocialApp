@@ -53,9 +53,18 @@
   }
 
   .container-right{
-
     float: none;
     margin: 0 auto;
     padding: 40px 0 0 0;
+  }
+}
+
+@media (max-width: 520px){
+  .container-left{
+    width: 100%;
+    min-width: 250px;
+  }
+  .container-right-card{
+    width: 94%;
   }
 }
