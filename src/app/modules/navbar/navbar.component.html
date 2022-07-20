@@ -7,19 +7,19 @@
   <div style="flex: 1 1 auto"></div>
   <!-- App Options -->
   <div *ngIf="!isScreenSmall">
-    <button mat-button [routerLink]="'/meet'">
+    <button mat-button matTooltip="Meet People" [routerLink]="'/meet'">
       <fa-icon class="fa-icon-navbar" [class]="routeString=='/meet'?'fa-icon-selected':'fa-icon-unselected'" [icon]="faUsers"></fa-icon>
     </button>
-    <button mat-button [routerLink]="'/messages'">
+    <button mat-button matTooltip="Send Messages" [routerLink]="'/messages'">
       <fa-icon class="fa-icon-navbar" [class]="routeString=='/messages'?'fa-icon-selected':'fa-icon-unselected'" [icon]="faMessage"></fa-icon>
     </button>
-    <button mat-button [routerLink]="'/publications'">
+    <button mat-button matTooltip="View Publications" [routerLink]="'/publications'">
       <fa-icon class="fa-icon-navbar" [class]="routeString=='/publications'?'fa-icon-selected':'fa-icon-unselected'" [icon]="faHouse"></fa-icon>
     </button>
-    <button mat-button [routerLink]="'/profile'">
+    <button mat-button matTooltip="Your Profile" [routerLink]="'/profile'">
       <fa-icon class="fa-icon-navbar" [icon]="faUser" [class]="routeString=='/profile'?'fa-icon-selected':'fa-icon-unselected'"></fa-icon>
     </button>
-    <button mat-button [matMenuTriggerFor]="notificationMenu">
+    <button mat-button matTooltip="View Notifications" [matMenuTriggerFor]="notificationMenu">
       <fa-icon id="fa-icon-bell-id" class="fa-icon-navbar fa-icon-unselected" [icon]="faBell"></fa-icon>
       <span *ngIf="userNotifications!=-1" [matBadge]="userNotifications" style="display: inline-block;"></span>
     </button>
