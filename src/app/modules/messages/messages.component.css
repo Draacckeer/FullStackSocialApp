@@ -68,7 +68,7 @@
 
 .messages{
   padding-bottom: 15px;
-  height: 350px;
+  height: 360px;
   overflow-y: auto;
   overflow-x: hidden;
 }
