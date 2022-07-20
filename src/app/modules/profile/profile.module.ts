@@ -10,6 +10,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatListModule} from "@angular/material/list";
 
 const profileRoutes: Routes = [
   {
@@ -33,6 +34,7 @@ const profileRoutes: Routes = [
         MatButtonModule,
         FlexLayoutModule,
         MatProgressBarModule,
+        MatListModule,
     ]
 })
 

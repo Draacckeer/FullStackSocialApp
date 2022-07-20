@@ -5,7 +5,7 @@
   <mat-tab label="Profile">
     <mat-card style="max-width: 300px; margin: 30px auto 0; background-color: #98ccdc">
       <mat-card-header>
-        <img style="width: 40px;" mat-card-avatar src="/assets/img/{{userMe.avatar}}.png" alt="{{userMe.avatar}}"/>
+        <img *ngIf="userServiceLoaded" style="width: 40px;" mat-card-avatar src="/assets/img/{{userMe.avatar}}.png" alt="{{userMe.avatar}}"/>
         <mat-card-title>{{userMe.username}}</mat-card-title>
         <mat-card-subtitle>{{userMe.avatar}}</mat-card-subtitle>
       </mat-card-header>
@@ -44,7 +44,17 @@
     </div>
   </mat-tab>
   <!--User Information-->
-  <mat-tab label="User Information">
-    <div>User Likes: {{userMe.likes}}</div>
-  </mat-tab>
+  <!--<mat-tab label="User Information">
+    <mat-list>
+      <div mat-subheader>User Details:</div>
+      <mat-list-item>
+        <h4 mat-line>{{userMe.username}}</h4>
+        <p mat-line>{{userMe.email}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h4 mat-line>{{userMe.username}}</h4>
+        <p mat-line>{{userMe.email}}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-tab>-->
 </mat-tab-group>
