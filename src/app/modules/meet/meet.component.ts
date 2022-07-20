@@ -5,6 +5,7 @@ import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {faUserGroup} from "@fortawesome/free-solid-svg-icons";
 import {ToastrService} from "ngx-toastr";
+import io from "socket.io-client";
 
 interface UserResponseExtends extends UserResponse {
   isLiked: boolean;
@@ -19,6 +20,7 @@ interface UserResponseExtends extends UserResponse {
 })
 
 export class MeetComponent implements OnInit {
+  socket: any;
   faHeart = faHeart;
   faUserPlus = faUserPlus;
   faUserGroup = faUserGroup;
@@ -31,6 +33,7 @@ export class MeetComponent implements OnInit {
 
   ngOnInit() {
     this.retrieveAll();
+    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
   }
 
   retrieveAll(){
@@ -92,6 +95,7 @@ export class MeetComponent implements OnInit {
           user.hasRequested = true;
           document.getElementById("faUserIcon" + id)!.children[0].classList.add("fa-beat");
           document.getElementById("faUserIcon" + id)!.children[0].classList.remove("fa-bounce");
+          this.socket.emit('notification', id);
         }
       })
     }
@@ -101,6 +105,7 @@ export class MeetComponent implements OnInit {
           user.hasRequested = false;
           document.getElementById("faUserIcon" + id)!.children[0].classList.remove("fa-beat");
           document.getElementById("faUserIcon" + id)!.children[0].classList.add("fa-bounce");
+          this.socket.emit('notification', id);
         }
       })
     }

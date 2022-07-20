@@ -70,7 +70,7 @@
         <fa-icon class="fa-icon-navbar-menu fa-icon-menu-unselected" [icon]="faBell"></fa-icon>
         <span>Notifications</span>
       </button>
-      <mat-menu #notificationMenu="matMenu">
+      <mat-menu class="custom-menu" #notificationMenu="matMenu">
         <button mat-menu-item *ngIf="initialDataLoaded && (user.userRequestOfFriends.length==0)">
           <div>No notifications</div>
         </button>

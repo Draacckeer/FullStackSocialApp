@@ -10,6 +10,7 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {faMessage} from "@fortawesome/free-solid-svg-icons";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {BreakpointObserver} from "@angular/cdk/layout";
+import io from "socket.io-client";
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 })
 
 export class NavbarComponent implements OnInit {
+  socket: any;
   userNotifications: number = -1;
   initialDataLoaded: boolean = false;
   isScreenSmall: boolean = false;
@@ -44,7 +46,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.retrieveData();
-
+    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket.on('notification', (data: any) => {
+      if(this.user.id === data){
+        this.retrieveData();
+      }
+    });
   }
 
   retrieveData(){
