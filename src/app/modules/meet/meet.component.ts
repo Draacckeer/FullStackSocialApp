@@ -4,6 +4,7 @@ import {UserResponse} from "../../models/userResponse";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {faUserGroup} from "@fortawesome/free-solid-svg-icons";
+import {ToastrService} from "ngx-toastr";
 
 interface UserResponseExtends extends UserResponse {
   isLiked: boolean;
@@ -24,7 +25,8 @@ export class MeetComponent implements OnInit {
   userMe: UserResponse = {} as UserResponse;
   users: UserResponseExtends[] = [] as UserResponseExtends[];
   constructor(private usersService: UsersService,
-              private elementRef: ElementRef) {
+              private elementRef: ElementRef,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -74,6 +76,16 @@ export class MeetComponent implements OnInit {
   }
 
   requestFriend(id: number, user: UserResponseExtends) {
+    if(user.isFriend){
+      this.toastr.error("You are already friends with this user", "Error");
+      return;
+    }
+    for(let userRequestFriend of user.userRequestFriends){
+      if(userRequestFriend.id === this.userMe.id){
+        this.toastr.error("This user has already requested to be your friend (go to notifications)", "Error");
+        return;
+      }
+    }
     if (!user.hasRequested) {
       this.usersService.requestFriendByToken(id).subscribe({
         next: () => {

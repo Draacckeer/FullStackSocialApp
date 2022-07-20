@@ -28,18 +28,7 @@
   margin: 20px 15px
 }
 
-/deep/ .mat-form-field.mat-focused .mat-form-field-label {
-  color: #ff884d!important;
-}
-/deep/ .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: #ff884d;
-}
-/deep/ .mat-form-field.mat-focused .mat-form-field-required-marker {
-  color: #ff884d;
-}
-/deep/ .mat-form-field.mat-focused .mat-input-element {
-  color: #ff884d;
-}
+
 
 
 @media (max-width: 1080px) {
