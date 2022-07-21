@@ -136,6 +136,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
         this.publicationCommentCreate.level3 = 0;
         this.publicationCommentsService.create(this.publicationCommentCreate).subscribe({
             next: (response2: any)=>{
+              response2.createdAt = formatDate(response2.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
               this.publicationCommentsArranged[index].push(response2);
               this.publicationCommentCreate = {} as PublicationComment;
               this.socket.emit('addNewPublicationComment', response2);

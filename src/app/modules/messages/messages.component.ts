@@ -4,6 +4,7 @@ import {UserResponse} from "../../models/userResponse";
 import {UsersService} from "../../services/users.service";
 import {MessagesService} from "../../services/messages.service";
 import io from "socket.io-client";
+import {formatDate} from "@angular/common";
 
 
 @Component({
@@ -70,6 +71,9 @@ export class MessagesComponent implements OnInit, AfterViewInit {
         this.messages = (messages.sort((a, b) => {
           return a.id - b.id;
         }));
+        for(let message of this.messages){
+          message.createdAt = formatDate(message.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
+        }
       }
     });
   }
@@ -87,6 +91,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
     this.messagesService.create(this.messageCreate).subscribe({
       next: (response: Message) => {
         this.message = "";
+        response.createdAt = formatDate(response.createdAt, "MMMM d, 'at' h:mm a", 'en-US');
         this.messages.push(response);
         this.socket.emit('addNewMessage', {
           userSenderid: this.userMe.id,
