@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
-import {Message} from "../../models/message";
-import {UserResponse} from "../../models/userResponse";
-import {UsersService} from "../../services/users.service";
-import {MessagesService} from "../../services/messages.service";
+import {Message} from "../../../../models/message";
+import {UserResponse} from "../../../../models/userResponse";
+import {UsersService} from "../../../../services/users.service";
+import {MessagesService} from "../../../../services/messages.service";
 import io from "socket.io-client";
 import {formatDate} from "@angular/common";
 

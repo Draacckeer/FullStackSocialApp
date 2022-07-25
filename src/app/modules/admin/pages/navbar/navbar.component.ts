@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {UsersService} from "../../services/users.service";
-import {UserResponse} from "../../models/userResponse";
+import {UsersService} from "../../../../services/users.service";
+import {UserResponse} from "../../../../models/userResponse";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import {faHouse} from "@fortawesome/free-solid-svg-icons";
 import {faUsers} from "@fortawesome/free-solid-svg-icons";

@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
-import {Publication} from "../../models/publication";
-import {PublicationsService} from "../../services/publications.service";
-import {PublicationComment} from "../../models/publicationComment";
-import {PublicationCommentsService} from "../../services/publicationComments.service";
+import {Publication} from "../../../../models/publication";
+import {PublicationsService} from "../../../../services/publications.service";
+import {PublicationComment} from "../../../../models/publicationComment";
+import {PublicationCommentsService} from "../../../../services/publicationComments.service";
 import io from "socket.io-client";
-import {UsersService} from "../../services/users.service";
+import {UsersService} from "../../../../services/users.service";
 import {formatDate} from "@angular/common";
 
 @Component({

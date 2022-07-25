@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
-import {UsersService} from "../../services/users.service";
-import {UserResponse} from "../../models/userResponse";
+import {UsersService} from "../../../../services/users.service";
+import {UserResponse} from "../../../../models/userResponse";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faUserMinus} from "@fortawesome/free-solid-svg-icons";
 
