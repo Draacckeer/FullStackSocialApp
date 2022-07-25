@@ -60,6 +60,10 @@ export class NavbarComponent implements OnInit {
         this.user = response;
         this.initialDataLoaded = true;
         this.userNotifications = this.user.userRequestOfFriends.length;
+      },
+      error: () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/']);
       }
     })
   }
