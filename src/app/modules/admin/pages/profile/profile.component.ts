@@ -31,6 +31,10 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
+    this.retrieveData();
+  }
+
+  retrieveData(){
     this.usersService.getUserByToken().subscribe({
       next: (response: UserResponse) => {
         this.userMe = Object.assign(this.userMe, response);
