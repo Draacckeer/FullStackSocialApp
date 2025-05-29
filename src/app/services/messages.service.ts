@@ -10,7 +10,7 @@ import {Message} from "../models/message";
 export class MessagesService{
 
   // Endpoint
-  basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/messages';
+  basePath = 'https://fullstacksocialapp-api-lenco.onrender.com/api/v1/messages';
 
   httpOptions = {
     headers: new HttpHeaders({

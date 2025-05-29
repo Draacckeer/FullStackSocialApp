@@ -11,7 +11,7 @@ import {UserResponse} from "../models/userResponse";
 export class UsersService {
 
   // Endpoint
-  basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/users/auth';
+  basePath = 'https://fullstacksocialapp-api-lenco.onrender.com/api/v1/users/auth';
 
   httpOptions = {
     headers: new HttpHeaders({

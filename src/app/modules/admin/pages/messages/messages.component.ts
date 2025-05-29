@@ -29,7 +29,7 @@ export class MessagesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.retrieveData();
-    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket = io('https://fullstacksocialappsocket-nodejs.onrender.com/');
     this.socket.on('addNewMessage', (data: any)=>{
       if(this.userSelected !=-1 && (data.userSenderid == this.userMe.id || data.userReceiverid == this.userMe.id)){
         this.selectUser(this.userSelected);

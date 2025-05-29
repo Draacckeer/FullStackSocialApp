@@ -9,7 +9,7 @@ import {PublicationComment} from "../models/publicationComment";
 export class PublicationCommentsService {
 
   // Endpoint
-  basePath = 'https://full-stack-social-app-api.herokuapp.com/api/v1/publication_comments';
+  basePath = 'https://fullstacksocialapp-api-lenco.onrender.com/api/v1/publication_comments';
 
   httpOptions = {
     headers: new HttpHeaders({

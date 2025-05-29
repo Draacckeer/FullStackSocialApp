@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.retrieveData();
-    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket = io('https://fullstacksocialappsocket-nodejs.onrender.com/');
     this.socket.on('notification', (data: any) => {
       if(this.user.id === data){
         this.retrieveData();

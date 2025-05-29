@@ -6,7 +6,12 @@
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let user of users">
         <mat-card style="background-color: #98ccdc; min-width: 150px;">
           <mat-card-header>
-            <div mat-card-avatar><img style="width: 40px; background-size: cover;" src="/assets/img/{{user.avatar}}.png" alt="{{user.avatar}}"/></div>
+            <div mat-card-avatar><img
+              style="width: 40px; background-size: cover;"
+              [src]="'/FullStackSocialApp/assets/img/' + user.avatar + '.png'"
+              alt="{{user.avatar}}"
+              (error)="onError($event)"
+            /></div>
             <mat-card-title>{{user.username}}</mat-card-title>
             <mat-card-subtitle>Avatar: {{user.avatar}}</mat-card-subtitle>
           </mat-card-header>

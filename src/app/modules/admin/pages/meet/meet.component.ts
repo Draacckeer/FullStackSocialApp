@@ -34,8 +34,12 @@ export class MeetComponent implements OnInit {
 
   ngOnInit() {
     this.retrieveAll();
-    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket = io('https://fullstacksocialappsocket-nodejs.onrender.com/');
   }
+
+  onError(event: Event) {
+  (event.target as HTMLImageElement).src = '/FullStackSocialApp/assets/img/avatar.png';
+ }
 
   retrieveAll(){
     this.usersService.getUserByToken().subscribe({

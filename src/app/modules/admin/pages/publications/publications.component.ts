@@ -34,7 +34,7 @@ export class PublicationsComponent implements OnInit, AfterViewInit{
   ngOnInit() {
     this.retrievePublications();
     // July 16, at 2:16:34 AM
-    this.socket = io('https://full-stack-social-app-socket.herokuapp.com/');
+    this.socket = io('https://fullstacksocialappsocket-nodejs.onrender.com/');
     this.socket.on('addNewPublicationComment', (data: PublicationComment)=>{
       this.publicationCommentsArranged[this.publicationsData.findIndex(x=>x.id==data.publication)].push(data);
     });

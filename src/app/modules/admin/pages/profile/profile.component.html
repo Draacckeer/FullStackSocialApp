@@ -5,7 +5,7 @@
   <mat-tab label="Profile">
     <mat-card style="max-width: 300px; margin: 30px auto 0; background-color: #98ccdc">
       <mat-card-header>
-        <img *ngIf="userServiceLoaded" style="width: 40px;" mat-card-avatar src="/assets/img/{{userMe.avatar}}.png" alt="{{userMe.avatar}}"/>
+        <img *ngIf="userServiceLoaded" style="width: 40px;" mat-card-avatar src="/FullStackSocialApp/assets/img/{{userMe.avatar}}.png" alt="{{userMe.avatar}}"/>
         <mat-card-title>{{userMe.username}}</mat-card-title>
         <mat-card-subtitle>Avatar: {{userMe.avatar}}</mat-card-subtitle>
       </mat-card-header>
@@ -22,7 +22,7 @@
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let friend of userMe.userFriends">
           <mat-card class="mat-elevation-z4" style="background-color: #98ccdc; min-width: 150px;">
             <mat-card-header>
-              <div mat-card-avatar><img style="width: 40px; background-size: cover;" src="/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/></div>
+              <div mat-card-avatar><img style="width: 40px; background-size: cover;" src="/FullStackSocialApp/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/></div>
               <mat-card-title>{{friend.username}}</mat-card-title>
               <mat-card-subtitle>Avatar: {{friend.avatar}}</mat-card-subtitle>
             </mat-card-header>

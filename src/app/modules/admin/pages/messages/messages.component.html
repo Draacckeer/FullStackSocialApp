@@ -6,7 +6,7 @@
       <div style="width: 150px; height: 50px; margin-left: -15px" *ngFor="let friend of userMe.userFriends">
         <button mat-button (click)="selectUser(friend.id)" [class]="userSelected==friend.id?'friend-selected':'friend-not-selected'"
                 style="width: 150px; flex-direction: row">
-          <img style="width: 40px;" src="/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/>
+          <img style="width: 40px;" src="/FullStackSocialApp/assets/img/{{friend.avatar}}.png" alt="{{friend.avatar}}"/>
           <div style="display: inline-block; width: 100px;">
             <div>{{friend.username}}</div>
           </div>
